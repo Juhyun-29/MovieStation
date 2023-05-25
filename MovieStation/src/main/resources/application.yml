@@ -1,0 +1,22 @@
+#서버 설정
+server:
+  port: 8083
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+
+#뷰 리졸버 설정
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/MovieStation/
+      suffix: .jsp
+
+#DataSource 설정`
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+    password: 1234
+    
