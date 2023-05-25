@@ -1,7 +1,9 @@
 package com.MovieStation.view.movie;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -18,6 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.MovieStation.biz.movie.Movie;
 import com.MovieStation.biz.movie.MovieService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 @RestController
 public class MovieController {
 
@@ -25,7 +30,13 @@ public class MovieController {
 	private MovieService movieService;
 	
 	@GetMapping("/search")
-	public ModelAndView searchMovie(Movie movie, ModelAndView mav) {
+	public ModelAndView searchPage(ModelAndView mav) {
+		mav.setViewName("search");
+		return mav;
+	}
+	
+	@GetMapping("/searching")
+	public ModelAndView searchMovie(Movie movie, ModelAndView mav) throws IOException {
 		System.out.println("/search 실행");
 		System.out.println("영화 검색 처리");
 		
@@ -38,9 +49,9 @@ public class MovieController {
 		System.out.println("현재 페이지 : "+page);
 		
 		String key = "KFI7VEXN1YPWR5EJLOD3";
-		String query = URLEncoder.encode(request.getParameter("query"),"UTF-8");
-		String keyword = request.getParameter("query");
-		String searchType=request.getParameter("searchType");
+		String query = URLEncoder.encode(movie.getQuery(),"UTF-8");
+		String keyword = movie.getQuery();
+		String searchType=movie.getSearchType();
 		
 		try {
 			URL url = new URL("https://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey="+key+"&"+searchType+"="+query+"&sort=prodYear,1&listCount=500");
@@ -59,15 +70,15 @@ public class MovieController {
 				int totalCount=0;
 				String msg="검색 결과가 없습니다. 검색유형과 검색어를 확인해 보시고 다시 검색해 보세요.";
 				
-				request.setAttribute("page", page);
-				request.setAttribute("query", query);
-				request.setAttribute("searchType", searchType);
-				request.setAttribute("keyword", keyword);			
-				request.setAttribute("totalCount", totalCount);
-				request.setAttribute("msg", msg);
+				mav.addObject("page", page);
+				mav.addObject("query", query);
+				mav.addObject("searchType", searchType);
+				mav.addObject("keyword", keyword);			
+				mav.addObject("totalCount", totalCount);
+				mav.addObject("msg", msg);
 				
-				RequestDispatcher dispatcher=request.getRequestDispatcher("searchResult.jsp");
-				dispatcher.forward(request, response);
+				mav.setViewName("searchResult");
+				return mav;
 			
 			// 검색 결과가 있을 때
 			}else {
@@ -90,15 +101,15 @@ public class MovieController {
 					int totalCount=0;
 					String msg="검색 결과가 없습니다. 검색유형과 검색어를 확인해 보시고 다시 검색해 보세요.";
 					
-					request.setAttribute("page", page);
-					request.setAttribute("query", query);
-					request.setAttribute("searchType", searchType);
-					request.setAttribute("keyword", keyword);			
-					request.setAttribute("totalCount", totalCount);
-					request.setAttribute("msg", msg);
+					mav.addObject("page", page);
+					mav.addObject("query", query);
+					mav.addObject("searchType", searchType);
+					mav.addObject("keyword", keyword);			
+					mav.addObject("totalCount", totalCount);
+					mav.addObject("msg", msg);
 					
-					RequestDispatcher dispatcher=request.getRequestDispatcher("searchResult.jsp");
-					dispatcher.forward(request, response);
+					mav.setViewName("searchResult");
+					return mav;
 				}else {
 					// 필터링 된 검색 결과 수
 					int totalCount=movieList.size()-1;
@@ -147,22 +158,20 @@ public class MovieController {
 						}
 					}
 					
-					request.setAttribute("page", page);
-					request.setAttribute("query", query);
-					request.setAttribute("searchType", searchType);
-					request.setAttribute("keyword", keyword);			
-					request.setAttribute("totalCount", totalCount);			
-					request.setAttribute("finalMovieList", finalMovieList);			
+					mav.addObject("page", page);
+					mav.addObject("query", query);
+					mav.addObject("searchType", searchType);
+					mav.addObject("keyword", keyword);			
+					mav.addObject("totalCount", totalCount);			
+					mav.addObject("finalMovieList", finalMovieList);			
 					
-					RequestDispatcher dispatcher=request.getRequestDispatcher("searchResult.jsp");
-					dispatcher.forward(request, response);	
 				}
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		mav.setViewName("redirect:searchResult");
+		mav.setViewName("searchResult");
 		return mav;
 	}
 	
@@ -275,7 +284,13 @@ public class MovieController {
 			e.printStackTrace();
 		}
 		
-		mav.setViewName("redirect:movieInfo");
+		mav.setViewName("movieInfo");
+		return mav;
+	}
+	
+	@GetMapping("/boxOfficeList")
+	public ModelAndView getBoxOfficeList(Movie movie, ModelAndView mav) {
+		mav.setViewName("boxOfficeList");
 		return mav;
 	}
 }

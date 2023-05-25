@@ -23,7 +23,7 @@
 		<jsp:include page="frame/sideBarSearch.jsp"/>
 		<div id="searchContainer">
   			<div id="search">
-  				<form id="searchForm" name="searchForm" action="search">
+  				<form id="searchForm" name="searchForm" action="searching">
   					<select id="searchType" name="searchType">
   						<option value="title">영화명</option>
   						<option value="director">감독명</option>

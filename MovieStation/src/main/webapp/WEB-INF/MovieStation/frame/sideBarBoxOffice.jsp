@@ -5,19 +5,19 @@
 <body>
 		<div id="sideBar">
 			<div class="logo">
-				<a id="logo" href="index.jsp"><img alt="logo" src="img/movieStation.png" width="100%"></a>
+				<a id="logo" href="index"><img alt="logo" src="img/movieStation.png" width="100%"></a>
 			</div>
 			<div class="btnImg">
-				<a id="searchBtn" class="link1" href="search.jsp"><img alt="searchImg" src="img/search.png" width="30px"><br>검색</a> 
+				<a id="searchBtn" class="link1" href="search"><img alt="searchImg" src="img/search.png" width="30px"><br>검색</a> 
 			</div>
 			<div class="btnImg">
-				<a id="homeBtn" class="link2" href="index.jsp"><img alt="homeImg" src="img/home.png" width="30px"><br>홈</a>
+				<a id="homeBtn" class="link2" href="index"><img alt="homeImg" src="img/home.png" width="30px"><br>홈</a>
 			</div>
 			<div class="btnImg">
 				<a id="boardBtn" class="link3" href="#"><img alt="boxofficeImg" src="img/boxoffice.png" width="30px"><br>게시판</a>
 			</div>
 			<div class="btnImg">
-				<a id="boxOfficeBtn" class="link4 active" href="boxOfficeList.jsp"><img alt="nowplayingImg" src="img/nowplaying.png" width="30px"><br>박스오피스</a>
+				<a id="boxOfficeBtn" class="link4 active" href="boxOfficeList"><img alt="nowplayingImg" src="img/nowplaying.png" width="30px"><br>박스오피스</a>
 			</div>
 			<div class="btnImg">
 				<a id="myPageBtn" class="link5" href="#"><img alt="upcomingImg" src="img/upcoming.png" width="30px"><br>마이페이지</a>

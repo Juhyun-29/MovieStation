@@ -55,30 +55,30 @@
 		
 		// 처음 링크(두 번째 페이지 이동 시 활성화)
 		if(startPage>1) { %>
-			<a href="search?searchType=<%=searchType %>&query=<%=query %>&page=1">처음</a>
+			<a href="searching?searchType=<%=searchType %>&query=<%=query %>&page=1">처음</a>
 		<%}
 		
 		// 이전 링크
 		if(pg>1) {%>
-			<a href="search?searchType=<%=searchType %>&query=<%=query %>&page=<%=pg-1%>">이전</a>
+			<a href="searching?searchType=<%=searchType %>&query=<%=query %>&page=<%=pg-1%>">이전</a>
 		<% }
 		
 		// 반복문을 이용하여 페이지리스트 생성. 현재페이지번호를 강조하기 위해 b태그 사용.
 		for (int iCount = startPage; iCount <= endPage; iCount++) {
 			if (iCount == pg) {%>
-				<a href="search?searchType=<%=searchType %>&query=<%=query %>&page=<%=iCount%>"><b><%=iCount %></b></a>
+				<a href="searching?searchType=<%=searchType %>&query=<%=query %>&page=<%=iCount%>"><b><%=iCount %></b></a>
 			<% } else {%>
-				<a href="search?searchType=<%=searchType %>&query=<%=query %>&page=<%=iCount%>"><%=iCount %></a>
+				<a href="searching?searchType=<%=searchType %>&query=<%=query %>&page=<%=iCount%>"><%=iCount %></a>
 			<% }
 		}
 		
 		// 다음 링크
 		if(pg<totalPage) {%>
-			<a href="search?searchType=<%=searchType %>&query=<%=query %>&page=<%=pg+1%>">다음</a>
+			<a href="searching?searchType=<%=searchType %>&query=<%=query %>&page=<%=pg+1%>">다음</a>
 		<% }
 		
 		// 끝 링크
 		if(endPage<totalPage) {%>
-			<a href="search?searchType=<%=searchType %>&query=<%=query %>&page=<%=totalPage %>">끝</a>
+			<a href="searching?searchType=<%=searchType %>&query=<%=query %>&page=<%=totalPage %>">끝</a>
 		<%}
 %>
