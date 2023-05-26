@@ -83,23 +83,31 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
-			<form name="commentForm">
-				<c:if test="${commentList.size()>0 }">
-					<c:forEach items="${replyList }" var="reply">
-						<div id="replyContainer">
-							<p>
-								<b> ${reply.masking_nickname } | </b> &nbsp;&nbsp;${reply.content } &nbsp;&nbsp; ${reply.regdate }
-								<c:if test="${id==reply.userid || role=='Admin'}">
-									<a href="getReplyBoard?rseq=${reply.rseq }">수정</a>
-									<a href="deleteReplyBoard?rseq=${reply.rseq }">삭제</a>
+				<c:if test="${fn:length(commentList)>0 }">
+					<div id="commentList">
+						<h3>별점과 한줄평</h3>
+						<c:forEach items="${commentList }" var="comment">
+							<div class="comment">
+								<div class="cmt_starpoint_wrap">
+									<div class="cmt_starpoint_box">
+										<label for="starpoint_comment" class="cmt_label_star"></label>
+										<span class="cmt_starpoint_bg" style="width: (${comment.starpoint}*10)%"></span>
+									</div>
+								</div>	
+								<a><b>${comment.nickname } | </b> &nbsp;&nbsp;${comment.starpoint}&nbsp;&nbsp;${comment.content} &nbsp;&nbsp; ${comment.regdate}</a>
+								
+								<c:if test="${id==comment.id || role=='Admin'}">
+									<a href="getReplyBoard?rseq=${comment.rseq }">수정</a>
+									<a href="deleteReplyBoard?rseq=${comment.rseq }">삭제</a>
 								</c:if>
 								<br>
-							</p>
-						</div>
-					</c:forEach>
+							</div>
+						</c:forEach>
+					</div>
 				</c:if>
+				<form name="commentForm" action="comment" method="post">
 				<div id="commentBox">
-					<input type="text" name="comment">
+					<input type="text" name="content">
 					<div class="starpoint_wrap">
 						<div class="starpoint_box">
 							<label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5개</span></label>
@@ -125,20 +133,37 @@
 							<span class="starpoint_bg"></span>
 						</div>
 					</div>
-					<button onclick="replyBoard();return false;">댓글 남기기</button>
+					<input type="hidden" name="movieId" value="${movieId}">
+					<input type="hidden" name="movieSeq" value="${movieSeq}">
+					<input type="hidden" name="nickname" value="${sessionScope.nickname}">
+					<input type="hidden" name="id" value="${sessionScope.id}">
+					<input type="submit" value="등록">
 				</div>
-			</form>
+				</form>
 			<hr>
 		</div>
 	</div>
 	<div id="footer"></div>
-	<script type="text/javascript">
-		function replyBoard() {
-			var comment=document.commentForm.comment.value;
-			var rating=document.commentForm.starpoint.value;
-			console.log(comment);
-			console.log(rating);
-		}
-	</script>
+    <script>
+    $(function () {
+        $(".starpoint_box").addClass("checked");
+        $(".label_star").each(function (i, o) {
+            $(this).on("mouseover", function () {
+                if($(".starpoint_box").hasClass("checked")===true){
+                    var widthValue = (i + 1) * 10;
+                    $(".starpoint_bg").css("width", widthValue + "%");
+                }
+            })
+        
+            $(this).on("click", function () {
+                    var widthValue = (i + 1) * 10;
+                    $(".starpoint_bg").css("width", widthValue + "%");
+                    $(".starpoint_box").toggleClass("checked");
+            })
+        });
+    });
+
+    </script>
+
 </body>
 </html>

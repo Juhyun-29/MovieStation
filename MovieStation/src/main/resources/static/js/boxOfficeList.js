@@ -32,7 +32,7 @@ $(function(){
                
                var dailyBoxOfficeRank="<tr>"
                			+"<td>"+rank+"위</td>"
-						+"<td><a href='search?searchType=title&query="+movieNm+"'>"+movieNm+"</a></td>"
+						+"<td><a href='searching?searchType=title&query="+movieNm+"'>"+movieNm+"</a></td>"
 						+"<td>"+openDt+"</td>"
 						+"<td>"+audiCnt+"명</td>"
 						+"<td>"+audiInten+"명</td>"
@@ -80,7 +80,7 @@ $(function(){
                
                var weekendBoxOfficeRank="<tr>"
                			+"<td>"+rank+"위</td>"
-						+"<td><a href='search?searchType=title&query="+movieNm+"'>"+movieNm+"</a></td>"
+						+"<td><a href='searching?searchType=title&query="+movieNm+"'>"+movieNm+"</a></td>"
 						+"<td>"+openDt+"</td>"
 						+"<td>"+audiCnt+"명</td>"
 						+"<td>"+audiInten+"명</td>"
@@ -125,7 +125,7 @@ $(function(){
                
                var weeklyBoxOfficeRank="<tr>"
                			+"<td>"+rank+"위</td>"
-						+"<td><a href='search?searchType=title&query="+movieNm+"'>"+movieNm+"</a></td>"
+						+"<td><a href='searching?searchType=title&query="+movieNm+"'>"+movieNm+"</a></td>"
 						+"<td>"+openDt+"</td>"
 						+"<td>"+audiCnt+"명</td>"
 						+"<td>"+audiInten+"명</td>"

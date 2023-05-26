@@ -25,14 +25,14 @@
 				<c:choose>
 					<c:when test="${empty name}">
 						<div id="insertUser">
-							<a href="insertUser.do">회원가입</a>
+							<a href="insertUser">회원가입</a>
 						</div>
 						<div id="login">
-							<a href="login.do">로그인</a>
+							<a href="login">로그인</a>
 						</div>
 					</c:when>
 					<c:otherwise>
-						<a id="logout" href="logout.do">로그아웃</a>
+						<a id="logout" href="logout">로그아웃</a>
 					</c:otherwise>
 				</c:choose>
 			</div>

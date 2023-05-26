@@ -9,26 +9,26 @@ import org.springframework.stereotype.Service;
 public class MovieService implements MovieMapper{
 
 	@Autowired
-	MovieDAO commentDAO;
+	MovieDAO movieDAO;
 	
 	@Override
 	public void insertComment(Movie comment) {
-		commentDAO.insertComment(comment);
+		movieDAO.insertComment(comment);
 	}
 
 	@Override
 	public void updateComment(Movie comment) {
-		commentDAO.updateComment(comment);
+		movieDAO.updateComment(comment);
 	}
 
 	@Override
 	public void deleteComment(Movie comment) {
-		commentDAO.deleteComment(comment);
+		movieDAO.deleteComment(comment);
 	}
 
 	@Override
 	public List<Movie> getCommentList(Movie comment) {
-		return commentDAO.getCommentList(comment);
+		return movieDAO.getCommentList(comment);
 	}
 
 }

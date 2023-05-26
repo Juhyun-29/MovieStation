@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -284,6 +285,13 @@ public class MovieController {
 			e.printStackTrace();
 		}
 		
+		System.out.println("getCommentList 실행");
+		
+		if(movie.getPage()==null) movie.setPage("1");
+		
+		mav.addObject("pg", movie.getPage());
+		mav.addObject("commentList", movieService.getCommentList(movie));
+		
 		mav.setViewName("movieInfo");
 		return mav;
 	}
@@ -291,6 +299,14 @@ public class MovieController {
 	@GetMapping("/boxOfficeList")
 	public ModelAndView getBoxOfficeList(Movie movie, ModelAndView mav) {
 		mav.setViewName("boxOfficeList");
+		return mav;
+	}
+	
+	@PostMapping("/comment")
+	public ModelAndView insertComment(Movie movie, ModelAndView mav) {
+		System.out.println("insertComment 실행");
+		movieService.insertComment(movie);
+		mav.setViewName("redirect:movieInfo");
 		return mav;
 	}
 }
