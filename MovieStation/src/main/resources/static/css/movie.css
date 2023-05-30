@@ -81,13 +81,11 @@ a{
 
 #subContainer1
 {
+	margin-left:7%;
 	width: 93%;
-	height: 100%;
 	display: flex;
-	position: fixed;
 	right: 0;
-	height: 100%;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
 	flex-direction: column;
 }
@@ -107,6 +105,10 @@ a{
 	margin: 50px 50px 0px 50px;
 	display: flex;
 }
+#header h1{
+	font-size: 50px;
+}
+
 #title{
 	margin-bottom: 30px;
 }
@@ -141,7 +143,7 @@ a{
 	margin: 30px 50px;
 	display: flex;
 	flex-direction: row;
-	overflow-x:auto;
+	overflow-x: auto;
 	background-color: #161616;
 	border: 1px solid #161616;
 	border-radius: 10px;
@@ -178,23 +180,41 @@ a{
 	margin-bottom: 30px;
 }
 
+
 #commentList{
 	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: 30px;
+}
+
+.comment{
+	background: #161616;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+.a_number{
+	font-size: 12px;
+}
+.a_text{
+	font-size: 14px;
 }
 
 #commentBox{
 	margin-left: 50px;
+	margin-right: 50px;
 }
 
-.cmt_starpoint_wrap{display:inline-block;}
+.cmt_starpoint_wrap{display:inline-block; vertical-align: middle;}
 .cmt_starpoint_box{position:relative;background:url("../img/sp_star.png") 0 0 no-repeat;font-size:0;}
-.cmt_starpoint_box .cmt_starpoint_bg{display:block;position:absolute;top:0;left:0;height:18px;background:url("../img/sp_star.png") 0 -20px no-repeat;pointer-events:none;}
-.cmt_starpoint_box .cmt_label_star{display:inline-block;width:10px;height:18px;box-sizing:border-box;}
+.cmt_starpoint_box .cmt_starpoint_bg{display:block;position:absolute;top:0;left:0;height:13px;background:url("../img/sp_star.png") 0 -15px no-repeat;pointer-events:none;}
+.cmt_starpoint_box .cmt_label_star{display:inline-block;width:72px;height:13px;box-sizing:border-box;}
 
-.starpoint_wrap{display:inline-block;}
+.starpoint_wrap{display:inline-block; vertical-align: middle;}
 .starpoint_box{position:relative;background:url("../img/sp_star.png") 0 0 no-repeat;font-size:0;}
-.starpoint_box .starpoint_bg{display:block;position:absolute;top:0;left:0;height:18px;background:url("../img/sp_star.png") 0 -20px no-repeat;pointer-events:none;}
-.starpoint_box .label_star{display:inline-block;width:10px;height:18px;box-sizing:border-box;}
+.starpoint_box .starpoint_bg{display:block;position:absolute;top:0;left:0;height:13px;background:url("../img/sp_star.png") 0 -15px no-repeat;pointer-events:none;}
+.starpoint_box .label_star{display:inline-block;width:7.2px;height:13px;box-sizing:border-box;}
 .starpoint_box .star_radio{opacity:0;width:0;height:0;position:absolute;}
 .blind{position:absolute;clip:rect(0 0 0 0);margin:-1px;width:1px;height: 1px;overflow:hidden;}
 

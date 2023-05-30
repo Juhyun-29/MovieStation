@@ -23,6 +23,7 @@ import com.MovieStation.biz.movie.MovieService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class MovieController {
@@ -177,13 +178,14 @@ public class MovieController {
 	}
 	
 	@GetMapping("/movie")
-	public ModelAndView getMovieInfo(Movie movie, ModelAndView mav) {
+	public ModelAndView getMovieInfo(Movie movie, HttpSession session, ModelAndView mav) {
 		System.out.println("/movie 실행");
 		System.out.println("영화 상세정보 처리");
 		
 		String key = "KFI7VEXN1YPWR5EJLOD3";
 		String movieId = movie.getMovieId();
 		String movieSeq = movie.getMovieSeq();
+		movie.setId((String)session.getAttribute("id"));
 		
 		try {
 			URL url = new URL("https://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey="+key+"&movieId="+movieId+"&movieSeq="+movieSeq);
@@ -290,6 +292,9 @@ public class MovieController {
 		if(movie.getPage()==null) movie.setPage("1");
 		
 		mav.addObject("pg", movie.getPage());
+		if(movie.getId()!=null) {
+			mav.addObject("myComment", movieService.getComment(movie));
+		}
 		mav.addObject("commentList", movieService.getCommentList(movie));
 		
 		mav.setViewName("movieInfo");
@@ -302,11 +307,20 @@ public class MovieController {
 		return mav;
 	}
 	
-	@PostMapping("/comment")
+	@PostMapping("/insertComment")
 	public ModelAndView insertComment(Movie movie, ModelAndView mav) {
 		System.out.println("insertComment 실행");
 		movieService.insertComment(movie);
-		mav.setViewName("redirect:movieInfo");
+		mav.setViewName("redirect:movie?movieId="+movie.getMovieId()+"&movieSeq="+movie.getMovieSeq());
 		return mav;
 	}
+	
+	@PostMapping("/updateComment")
+	public ModelAndView updateComment(Movie movie, ModelAndView mav) {
+		System.out.println("updateComment 실행");
+		movieService.updateComment(movie);
+		mav.setViewName("redirect:movie?movieId="+movie.getMovieId()+"&movieSeq="+movie.getMovieSeq());
+		return mav;
+	}
+	
 }

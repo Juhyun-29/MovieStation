@@ -83,63 +83,95 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
-				<c:if test="${fn:length(commentList)>0 }">
-					<div id="commentList">
-						<h3>별점과 한줄평</h3>
-						<c:forEach items="${commentList }" var="comment">
-							<div class="comment">
-								<div class="cmt_starpoint_wrap">
-									<div class="cmt_starpoint_box">
-										<label for="starpoint_comment" class="cmt_label_star"></label>
-										<span class="cmt_starpoint_bg" style="width: (${comment.starpoint}*10)%"></span>
-									</div>
-								</div>	
-								<a><b>${comment.nickname } | </b> &nbsp;&nbsp;${comment.starpoint}&nbsp;&nbsp;${comment.content} &nbsp;&nbsp; ${comment.regdate}</a>
-								
-								<c:if test="${id==comment.id || role=='Admin'}">
-									<a href="getReplyBoard?rseq=${comment.rseq }">수정</a>
-									<a href="deleteReplyBoard?rseq=${comment.rseq }">삭제</a>
-								</c:if>
-								<br>
+			<c:if test="${not empty sessionScope.id}">
+				<c:choose>
+					<c:when test="${empty myComment}">
+						<form name="commentForm" action="insertComment" method="post">
+						<div id="commentBox">
+							<input type="text" name="content">
+							<div class="starpoint_wrap">
+								<div class="starpoint_box">
+									<label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5개</span></label>
+									<label for="starpoint_2" class="label_star" title="1"><span class="blind">1개</span></label>
+									<label for="starpoint_3" class="label_star" title="1.5"><span class="blind">1.5개</span></label>
+									<label for="starpoint_4" class="label_star" title="2"><span class="blind">2개</span></label>
+									<label for="starpoint_5" class="label_star" title="2.5"><span class="blind">2.5개</span></label>
+									<label for="starpoint_6" class="label_star" title="3"><span class="blind">3개</span></label>
+									<label for="starpoint_7" class="label_star" title="3.5"><span class="blind">3.5개</span></label>
+									<label for="starpoint_8" class="label_star" title="4"><span class="blind">4개</span></label>
+									<label for="starpoint_9" class="label_star" title="4.5"><span class="blind">4.5개</span></label>
+									<label for="starpoint_10" class="label_star" title="5"><span class="blind">5개</span></label>
+									<input type="radio" name="starpoint" id="starpoint_1" class="star_radio" value="1">
+									<input type="radio" name="starpoint" id="starpoint_2" class="star_radio" value="2">
+									<input type="radio" name="starpoint" id="starpoint_3" class="star_radio" value="3">
+									<input type="radio" name="starpoint" id="starpoint_4" class="star_radio" value="4">
+									<input type="radio" name="starpoint" id="starpoint_5" class="star_radio" value="5">
+									<input type="radio" name="starpoint" id="starpoint_6" class="star_radio" value="6">
+									<input type="radio" name="starpoint" id="starpoint_7" class="star_radio" value="7">
+									<input type="radio" name="starpoint" id="starpoint_8" class="star_radio" value="8">
+									<input type="radio" name="starpoint" id="starpoint_9" class="star_radio" value="9">
+									<input type="radio" name="starpoint" id="starpoint_10" class="star_radio" value="10">
+									<span class="starpoint_bg"></span>
+								</div>
 							</div>
-						</c:forEach>
-					</div>
-				</c:if>
-				<form name="commentForm" action="comment" method="post">
-				<div id="commentBox">
-					<input type="text" name="content">
-					<div class="starpoint_wrap">
-						<div class="starpoint_box">
-							<label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5개</span></label>
-							<label for="starpoint_2" class="label_star" title="1"><span class="blind">1개</span></label>
-							<label for="starpoint_3" class="label_star" title="1.5"><span class="blind">1.5개</span></label>
-							<label for="starpoint_4" class="label_star" title="2"><span class="blind">2개</span></label>
-							<label for="starpoint_5" class="label_star" title="2.5"><span class="blind">2.5개</span></label>
-							<label for="starpoint_6" class="label_star" title="3"><span class="blind">3개</span></label>
-							<label for="starpoint_7" class="label_star" title="3.5"><span class="blind">3.5개</span></label>
-							<label for="starpoint_8" class="label_star" title="4"><span class="blind">4개</span></label>
-							<label for="starpoint_9" class="label_star" title="4.5"><span class="blind">4.5개</span></label>
-							<label for="starpoint_10" class="label_star" title="5"><span class="blind">5개</span></label>
-							<input type="radio" name="starpoint" id="starpoint_1" class="star_radio" value="1">
-							<input type="radio" name="starpoint" id="starpoint_2" class="star_radio" value="2">
-							<input type="radio" name="starpoint" id="starpoint_3" class="star_radio" value="3">
-							<input type="radio" name="starpoint" id="starpoint_4" class="star_radio" value="4">
-							<input type="radio" name="starpoint" id="starpoint_5" class="star_radio" value="5">
-							<input type="radio" name="starpoint" id="starpoint_6" class="star_radio" value="6">
-							<input type="radio" name="starpoint" id="starpoint_7" class="star_radio" value="7">
-							<input type="radio" name="starpoint" id="starpoint_8" class="star_radio" value="8">
-							<input type="radio" name="starpoint" id="starpoint_9" class="star_radio" value="9">
-							<input type="radio" name="starpoint" id="starpoint_10" class="star_radio" value="10">
-							<span class="starpoint_bg"></span>
+							<input type="hidden" name="movieId" value="${movieId}">
+							<input type="hidden" name="movieSeq" value="${movieSeq}">
+							<input type="hidden" name="nickname" value="${sessionScope.nickname}">
+							<input type="hidden" name="id" value="${sessionScope.id}">
+							<input type="submit" value="등록">
 						</div>
-					</div>
-					<input type="hidden" name="movieId" value="${movieId}">
-					<input type="hidden" name="movieSeq" value="${movieSeq}">
-					<input type="hidden" name="nickname" value="${sessionScope.nickname}">
-					<input type="hidden" name="id" value="${sessionScope.id}">
-					<input type="submit" value="등록">
+						</form>
+					</c:when>
+					<c:otherwise>
+						<h3>나의 별점 & 한줄평</h3>
+						<div id="commentBox" class="comment">
+							<div class="cmt_starpoint_wrap">
+								<div class="cmt_starpoint_box">
+									<label for="starpoint_comment" class="cmt_label_star"></label>
+									<span class="cmt_starpoint_bg" style="width: calc(${myComment.starpoint}*10%)"></span>
+								</div>
+							</div>
+							<a class="a_number"><b>${myComment.starpoint}</b></a><br>
+							<a class="a_text">${myComment.content}</a><br>
+							<a class="a_text"><b>${myComment.nickname } |</b></a> <a class="a_number">${myComment.regdate}</a>
+<%-- 							<input type="hidden" value="${myComment.rseq}"> --%>
+<%-- 							<input type="hidden" value="${myComment.starpoint}"> --%>
+<%-- 							<input type="hidden" value="${myComment.content}"> --%>
+							<c:if test="${sessionScope.id==myComment.id || role=='Admin'}">
+								<a class="a_text" onclick="updateComment()">수정</a>
+								<a class="a_text" href="deleteComment?rseq=${myComment.rseq}">삭제</a>
+							</c:if>
+							<br>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</c:if>
+			<c:if test="${fn:length(commentList)>0 }">
+				<div id="commentList">
+					<h3>별점 & 한줄평</h3>
+					<c:forEach items="${commentList }" var="comment" varStatus="status">
+						<div class="comment">
+							<div class="cmt_starpoint_wrap">
+								<div class="cmt_starpoint_box">
+									<label for="starpoint_comment" class="cmt_label_star"></label>
+									<span class="cmt_starpoint_bg" style="width: calc(${comment.starpoint}*10%)"></span>
+								</div>
+							</div>
+							<a class="a_number"><b>${comment.starpoint}</b></a><br>
+							<a class="a_text">${comment.content}</a><br>
+							<a class="a_text"><b>${comment.nickname} |</b></a> <a class="a_number">${comment.regdate}</a>
+							<input type="hidden" id="rseq${status.current}" value="${comment.rseq}">
+							<input type="hidden" id="starpoint${status.current}" value="${comment.starpoint}">
+							<input type="hidden" id="content${status.current}" value="${comment.content}">
+							<c:if test="${id==comment.id || role=='Admin'}">
+								<a class="a_text" onclick="updateComment()" style="margin-left: 10px;">수정</a>
+								<a class="a_text" href="deleteComment?rseq=${comment.rseq}">삭제</a>
+							</c:if>
+							<br>
+						</div>
+					</c:forEach>
 				</div>
-				</form>
+			</c:if>
 			<hr>
 		</div>
 	</div>
@@ -163,6 +195,41 @@
         });
     });
 
+//     function updateComment(){
+//     	$('#getComment'+${comment.rseq}).html(
+//     		"<form name='commentForm' action='updateComment' method='post'>"
+// 			+"<div id='commentBox'>"
+// 			+"<input type='text' name='content'>"
+// 			+"<div class='starpoint_wrap'>"
+// 				+"<div class='starpoint_box'>"
+// 					+"<label for='starpoint_' class='label_star' title='0.5'><span class='blind'>0.5개</span></label>"
+// 					+"<label for='starpoint_' class='label_star' title='1'><span class='blind'>1개</span></label>"
+// 					+"<label for='starpoint_' class='label_star' title='1.5'><span class='blind'>1.5개</span></label>"
+// 					+"<label for='starpoint_' class='label_star' title='2'><span class='blind'>2개</span></label>"
+// 					+"<label for='starpoint_' class='label_star' title='2.5'><span class='blind'>2.5개</span></label>"
+// 					+"<label for='starpoint_' class='label_star' title='3'><span class='blind'>3개</span></label>"
+// 					+"<label for='starpoint_' class='label_star' title='3.5'><span class='blind'>3.5개</span></label>"
+// 					+"<label for='starpoint_' class='label_star' title='4'><span class='blind'>4개</span></label>"
+// 					+"<label for='starpoint_' class='label_star' title='4.5'><span class='blind'>4.5개</span></label>"
+// 					+"<label for='starpoint_10' class='label_star' title='5'><span class='blind'>5개</span></label>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_1' class='star_radio' value='1'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_2' class='star_radio' value='2'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_3' class='star_radio' value='3'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_4' class='star_radio' value='4'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_5' class='star_radio' value='5'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_6' class='star_radio' value='6'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_7' class='star_radio' value='7'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_8' class='star_radio' value='8'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_9' class='star_radio' value='9'>"
+// 					+"<input type='radio' name='starpoint' id='starpoint_10' class='star_radio' value='10'>"
+// 					+"<span class='starpoint_bg'></span>"
+// 				+"</div>"
+// 			+"</div>"
+// 			+"<input type='submit' value='수정'>"
+// 		+"</div>"
+// 		+"</form>"
+//     	);
+//     }
     </script>
 
 </body>

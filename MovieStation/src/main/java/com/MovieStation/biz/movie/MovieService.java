@@ -31,4 +31,9 @@ public class MovieService implements MovieMapper{
 		return movieDAO.getCommentList(comment);
 	}
 
+	@Override
+	public Movie getComment(Movie comment) {
+		return movieDAO.getComment(comment);
+	}
+
 }
