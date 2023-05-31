@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	<div id="container">
+ 	<div id="container">
 		<jsp:include page="frame/sideBarSearch.jsp"/>
 		<div id="subContainer1">
 			<div id="header">
@@ -87,44 +87,49 @@
 				<c:choose>
 					<c:when test="${empty myComment}">
 						<form name="commentForm" action="insertComment" method="post">
-						<div id="commentBox">
-							<input type="text" name="content">
-							<div class="starpoint_wrap">
-								<div class="starpoint_box">
-									<label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5개</span></label>
-									<label for="starpoint_2" class="label_star" title="1"><span class="blind">1개</span></label>
-									<label for="starpoint_3" class="label_star" title="1.5"><span class="blind">1.5개</span></label>
-									<label for="starpoint_4" class="label_star" title="2"><span class="blind">2개</span></label>
-									<label for="starpoint_5" class="label_star" title="2.5"><span class="blind">2.5개</span></label>
-									<label for="starpoint_6" class="label_star" title="3"><span class="blind">3개</span></label>
-									<label for="starpoint_7" class="label_star" title="3.5"><span class="blind">3.5개</span></label>
-									<label for="starpoint_8" class="label_star" title="4"><span class="blind">4개</span></label>
-									<label for="starpoint_9" class="label_star" title="4.5"><span class="blind">4.5개</span></label>
-									<label for="starpoint_10" class="label_star" title="5"><span class="blind">5개</span></label>
-									<input type="radio" name="starpoint" id="starpoint_1" class="star_radio" value="1">
-									<input type="radio" name="starpoint" id="starpoint_2" class="star_radio" value="2">
-									<input type="radio" name="starpoint" id="starpoint_3" class="star_radio" value="3">
-									<input type="radio" name="starpoint" id="starpoint_4" class="star_radio" value="4">
-									<input type="radio" name="starpoint" id="starpoint_5" class="star_radio" value="5">
-									<input type="radio" name="starpoint" id="starpoint_6" class="star_radio" value="6">
-									<input type="radio" name="starpoint" id="starpoint_7" class="star_radio" value="7">
-									<input type="radio" name="starpoint" id="starpoint_8" class="star_radio" value="8">
-									<input type="radio" name="starpoint" id="starpoint_9" class="star_radio" value="9">
-									<input type="radio" name="starpoint" id="starpoint_10" class="star_radio" value="10">
-									<span class="starpoint_bg"></span>
+						<div class="commentList">
+							<h3>나의 별점 & 한줄평 등록하기</h3>
+							<div class="comment">
+								<div class="starpoint_wrap">
+									<div class="starpoint_box">
+										<label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5개</span></label>
+										<label for="starpoint_2" class="label_star" title="1"><span class="blind">1개</span></label>
+										<label for="starpoint_3" class="label_star" title="1.5"><span class="blind">1.5개</span></label>
+										<label for="starpoint_4" class="label_star" title="2"><span class="blind">2개</span></label>
+										<label for="starpoint_5" class="label_star" title="2.5"><span class="blind">2.5개</span></label>
+										<label for="starpoint_6" class="label_star" title="3"><span class="blind">3개</span></label>
+										<label for="starpoint_7" class="label_star" title="3.5"><span class="blind">3.5개</span></label>
+										<label for="starpoint_8" class="label_star" title="4"><span class="blind">4개</span></label>
+										<label for="starpoint_9" class="label_star" title="4.5"><span class="blind">4.5개</span></label>
+										<label for="starpoint_10" class="label_star" title="5"><span class="blind">5개</span></label>
+										<input type="radio" name="starpoint" id="starpoint_1" class="star_radio" value="1">
+										<input type="radio" name="starpoint" id="starpoint_2" class="star_radio" value="2">
+										<input type="radio" name="starpoint" id="starpoint_3" class="star_radio" value="3">
+										<input type="radio" name="starpoint" id="starpoint_4" class="star_radio" value="4">
+										<input type="radio" name="starpoint" id="starpoint_5" class="star_radio" value="5">
+										<input type="radio" name="starpoint" id="starpoint_6" class="star_radio" value="6">
+										<input type="radio" name="starpoint" id="starpoint_7" class="star_radio" value="7">
+										<input type="radio" name="starpoint" id="starpoint_8" class="star_radio" value="8">
+										<input type="radio" name="starpoint" id="starpoint_9" class="star_radio" value="9">
+										<input type="radio" name="starpoint" id="starpoint_10" class="star_radio" value="10">
+										<span class="starpoint_bg"></span>
+									</div>
 								</div>
+								<a class="a_number">최대 별 5개(10점)</a>
+								<br><input id="commentInput" type="text" name="content">
+								<input type="hidden" name="movieId" value="${movieId}">
+								<input type="hidden" name="movieSeq" value="${movieSeq}">
+								<input type="hidden" name="nickname" value="${sessionScope.nickname}">
+								<input type="hidden" name="id" value="${sessionScope.id}">
+								<input id="commentSubmit" type="submit" value="등록">
 							</div>
-							<input type="hidden" name="movieId" value="${movieId}">
-							<input type="hidden" name="movieSeq" value="${movieSeq}">
-							<input type="hidden" name="nickname" value="${sessionScope.nickname}">
-							<input type="hidden" name="id" value="${sessionScope.id}">
-							<input type="submit" value="등록">
 						</div>
 						</form>
 					</c:when>
 					<c:otherwise>
+						<div class="commentList">
 						<h3>나의 별점 & 한줄평</h3>
-						<div id="commentBox" class="comment">
+						<div class="comment">
 							<div class="cmt_starpoint_wrap">
 								<div class="cmt_starpoint_box">
 									<label for="starpoint_comment" class="cmt_label_star"></label>
@@ -134,20 +139,24 @@
 							<a class="a_number"><b>${myComment.starpoint}</b></a><br>
 							<a class="a_text">${myComment.content}</a><br>
 							<a class="a_text"><b>${myComment.nickname } |</b></a> <a class="a_number">${myComment.regdate}</a>
-<%-- 							<input type="hidden" value="${myComment.rseq}"> --%>
-<%-- 							<input type="hidden" value="${myComment.starpoint}"> --%>
-<%-- 							<input type="hidden" value="${myComment.content}"> --%>
 							<c:if test="${sessionScope.id==myComment.id || role=='Admin'}">
-								<a class="a_text" onclick="updateComment()">수정</a>
-								<a class="a_text" href="deleteComment?rseq=${myComment.rseq}">삭제</a>
+								<a class="a_text" href="javascript:void(0)" onclick="javascript:updateComment()">수정</a>
+								<a class="a_text" href="javascript:void(0)" onclick="javascript:deleteComment()">삭제</a>
+								<form name="commentForm" method="post">
+									<input type="hidden" name="movieId" value="${movieId}">
+									<input type="hidden" name="movieSeq" value="${movieSeq}">
+									<input type="hidden" name="rseq" value="${myComment.rseq}">
+									<input type="hidden" name="starpoint" value="${myComment.starpoint}">
+									<input type="hidden" name="content" value="${myComment.content}">
+								</form>
 							</c:if>
-							<br>
+						</div>
 						</div>
 					</c:otherwise>
 				</c:choose>
 			</c:if>
 			<c:if test="${fn:length(commentList)>0 }">
-				<div id="commentList">
+				<div class="commentList">
 					<h3>별점 & 한줄평</h3>
 					<c:forEach items="${commentList }" var="comment" varStatus="status">
 						<div class="comment">
@@ -174,7 +183,7 @@
 			</c:if>
 			<hr>
 		</div>
-	</div>
+ 	</div> 
 	<div id="footer"></div>
     <script>
     $(function () {
@@ -230,6 +239,11 @@
 // 		+"</form>"
 //     	);
 //     }
+	
+	function deleteComment(){
+		document.commentForm.action="deleteComment";
+		document.commentForm.submit();
+	}
     </script>
 
 </body>

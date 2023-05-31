@@ -6,6 +6,18 @@
 	box-sizing: border-box;
 }
 
+html::-webkit-scrollbar{
+	width: 10px;
+}
+html::-webkit-scrollbar-thumb{
+	height: 30%;
+	background: #c2c2c2;
+	border-radius: 10px;
+}
+html::-webkit-scrollbar-track{
+	background: #161616;
+}
+
 body{
 	font-family: 'NanumSquareNeo';
 	background-color: black;
@@ -75,25 +87,10 @@ a{
 #searchContainer
 {
 	width: 93%;
-	height: 100%;
 	display: flex;
-	position: fixed;
+	margin-left:7%;
 	right: 0;
-	height: 100%;
-	overflow-y: scroll;
-	overflow-x: hidden;
 	flex-direction: column;
-}
-#searchContainer::-webkit-scrollbar{
-	width: 10px;
-}
-#searchContainer::-webkit-scrollbar-thumb{
-	height: 30%;
-	background: #c2c2c2;
-	border-radius: 10px;
-}
-#searchContainer::-webkit-scrollbar-track{
-	background: #161616;
 }
 
 #btns{

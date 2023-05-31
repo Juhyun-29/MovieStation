@@ -6,6 +6,18 @@
 	box-sizing: border-box;
 }
 
+html::-webkit-scrollbar{
+	width: 10px;
+}
+html::-webkit-scrollbar-thumb{
+	height: 30%;
+	background: #c2c2c2;
+	border-radius: 10px;
+}
+html::-webkit-scrollbar-track{
+	background: #161616;
+}
+
 body{
 	font-family: 'NanumSquareNeo';
 	background-color: black;
@@ -81,24 +93,11 @@ a{
 
 #subContainer1
 {
-	margin-left:7%;
 	width: 93%;
 	display: flex;
+	margin-left:7%;
 	right: 0;
-	overflow-y: auto;
-	overflow-x: hidden;
 	flex-direction: column;
-}
-#subContainer1::-webkit-scrollbar{
-	width: 10px;
-}
-#subContainer1::-webkit-scrollbar-thumb{
-	height: 30%;
-	background: #c2c2c2;
-	border-radius: 10px;
-}
-#subContainer1::-webkit-scrollbar-track{
-	background: #161616;
 }
 
 #header{
@@ -181,7 +180,7 @@ a{
 }
 
 
-#commentList{
+.commentList{
 	margin-left: 50px;
 	margin-right: 50px;
 	margin-bottom: 30px;
@@ -193,17 +192,24 @@ a{
 	margin-bottom: 10px;
 	padding: 10px;
 }
-
+#commentInput{
+	width: 300px;
+	height: 30px;
+	font-size: 14px;
+	padding-left: 5px;
+	margin-top: 5px;
+	border: 2px solid #c2c2c2;
+	border-radius: 5px;
+}
+#commentSubmit{
+	padding: 6px;
+	font-family: NanumSquareNeo;
+}
 .a_number{
 	font-size: 12px;
 }
 .a_text{
 	font-size: 14px;
-}
-
-#commentBox{
-	margin-left: 50px;
-	margin-right: 50px;
 }
 
 .cmt_starpoint_wrap{display:inline-block; vertical-align: middle;}

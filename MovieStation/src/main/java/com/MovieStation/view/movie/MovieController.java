@@ -323,4 +323,13 @@ public class MovieController {
 		return mav;
 	}
 	
+	@PostMapping("/deleteComment")
+	public ModelAndView deleteComment(Movie movie, ModelAndView mav) {
+		System.out.println("deleteComment 실행");
+		System.out.println(movie.getRseq());
+		movieService.deleteComment(movie);
+		mav.setViewName("redirect:movie?movieId="+movie.getMovieId()+"&movieSeq="+movie.getMovieSeq());
+		return mav;
+	}
+	
 }
