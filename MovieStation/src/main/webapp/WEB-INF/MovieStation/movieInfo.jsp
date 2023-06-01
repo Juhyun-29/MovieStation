@@ -32,13 +32,18 @@
 						</h1>
 					</div>
 					<div id="detail">
-						<div id="staffList" class="list">
+						<div id="staffAndStarpoint" class="list">
 							<h3 class="detailHeader">제작진</h3>
 							<c:forEach items="${staffList}" var="staff">
 								<a class="detail"><b>${staff.staffRoleGroup} | </b>${staff.staffNm}</a>
 							</c:forEach>
+							<br>
+							<div id="score">
+								<img alt="starpoint" src="img/score.png" width="90px">
+								<a></a>
+							</div>
 						</div>
-						<div id="info" class="list">
+						<div id="info" class="infoList">
 							<h3 class="detailHeader">기본정보</h3>
 							<a class="detail"><b>개봉 | </b>${repRlsDate}</a>
 							<a class="detail"><b>등급 | </b>${rating}</a>
@@ -158,27 +163,34 @@
 			<c:if test="${fn:length(commentList)>0 }">
 				<div class="commentList">
 					<h3>별점 & 한줄평</h3>
-					<c:forEach items="${commentList }" var="comment" varStatus="status">
-						<div class="comment">
-							<div class="cmt_starpoint_wrap">
-								<div class="cmt_starpoint_box">
-									<label for="starpoint_comment" class="cmt_label_star"></label>
-									<span class="cmt_starpoint_bg" style="width: calc(${comment.starpoint}*10%)"></span>
+					<div id="js-load" class="main">
+					<ul class="lists">
+						<c:forEach items="${commentList }" var="comment" varStatus="status">
+							<li class="lists_item js-load">
+								<div class="comment">
+									<div class="cmt_starpoint_wrap">
+										<div class="cmt_starpoint_box">
+											<label for="starpoint_comment" class="cmt_label_star"></label>
+											<span class="cmt_starpoint_bg" style="width: calc(${comment.starpoint}*10%)"></span>
+										</div>
+									</div>
+									<a class="a_number"><b>${comment.starpoint}</b></a><br>
+									<a class="a_text">${comment.content}</a><br>
+									<a class="a_text"><b>${comment.nickname} |</b></a> <a class="a_number">${comment.regdate}</a>
+									<input type="hidden" id="rseq${status.current}" value="${comment.rseq}">
+									<input type="hidden" id="starpoint${status.current}" value="${comment.starpoint}">
+									<input type="hidden" id="content${status.current}" value="${comment.content}">
+									<c:if test="${id==comment.id || role=='Admin'}">
+										<a class="a_text" onclick="updateComment()" style="margin-left: 10px;">수정</a>
+										<a class="a_text" href="deleteComment?rseq=${comment.rseq}">삭제</a>
+									</c:if>
+									<br>
 								</div>
-							</div>
-							<a class="a_number"><b>${comment.starpoint}</b></a><br>
-							<a class="a_text">${comment.content}</a><br>
-							<a class="a_text"><b>${comment.nickname} |</b></a> <a class="a_number">${comment.regdate}</a>
-							<input type="hidden" id="rseq${status.current}" value="${comment.rseq}">
-							<input type="hidden" id="starpoint${status.current}" value="${comment.starpoint}">
-							<input type="hidden" id="content${status.current}" value="${comment.content}">
-							<c:if test="${id==comment.id || role=='Admin'}">
-								<a class="a_text" onclick="updateComment()" style="margin-left: 10px;">수정</a>
-								<a class="a_text" href="deleteComment?rseq=${comment.rseq}">삭제</a>
-							</c:if>
-							<br>
-						</div>
-					</c:forEach>
+							</li>
+						</c:forEach>
+					</ul>
+					 <div id="js-btn-wrap" class="btn-wrap"> <a href="javascript:;" class="button">더보기</a> </div>
+					</div>
 				</div>
 			</c:if>
 			<hr>
@@ -204,42 +216,27 @@
         });
     });
 
-//     function updateComment(){
-//     	$('#getComment'+${comment.rseq}).html(
-//     		"<form name='commentForm' action='updateComment' method='post'>"
-// 			+"<div id='commentBox'>"
-// 			+"<input type='text' name='content'>"
-// 			+"<div class='starpoint_wrap'>"
-// 				+"<div class='starpoint_box'>"
-// 					+"<label for='starpoint_' class='label_star' title='0.5'><span class='blind'>0.5개</span></label>"
-// 					+"<label for='starpoint_' class='label_star' title='1'><span class='blind'>1개</span></label>"
-// 					+"<label for='starpoint_' class='label_star' title='1.5'><span class='blind'>1.5개</span></label>"
-// 					+"<label for='starpoint_' class='label_star' title='2'><span class='blind'>2개</span></label>"
-// 					+"<label for='starpoint_' class='label_star' title='2.5'><span class='blind'>2.5개</span></label>"
-// 					+"<label for='starpoint_' class='label_star' title='3'><span class='blind'>3개</span></label>"
-// 					+"<label for='starpoint_' class='label_star' title='3.5'><span class='blind'>3.5개</span></label>"
-// 					+"<label for='starpoint_' class='label_star' title='4'><span class='blind'>4개</span></label>"
-// 					+"<label for='starpoint_' class='label_star' title='4.5'><span class='blind'>4.5개</span></label>"
-// 					+"<label for='starpoint_10' class='label_star' title='5'><span class='blind'>5개</span></label>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_1' class='star_radio' value='1'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_2' class='star_radio' value='2'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_3' class='star_radio' value='3'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_4' class='star_radio' value='4'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_5' class='star_radio' value='5'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_6' class='star_radio' value='6'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_7' class='star_radio' value='7'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_8' class='star_radio' value='8'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_9' class='star_radio' value='9'>"
-// 					+"<input type='radio' name='starpoint' id='starpoint_10' class='star_radio' value='10'>"
-// 					+"<span class='starpoint_bg'></span>"
-// 				+"</div>"
-// 			+"</div>"
-// 			+"<input type='submit' value='수정'>"
-// 		+"</div>"
-// 		+"</form>"
-//     	);
-//     }
-	
+    $(window).on('load', function () {
+        load('#js-load', '5');
+        $("#js-btn-wrap .button").on("click", function () {
+            load('#js-load', '5', '#js-btn-wrap');
+        })
+    });
+     
+    function load(id, cnt, btn) {
+        var commentList = id + " .js-load:not(.active)";
+        var commentLength = $(girls_list).length;
+        var commentTotalCnt;
+        if (cnt < commentLength) {
+        	commentTotalCnt = cnt;
+        } else {
+        	commentTotalCnt = commentLength;
+            $('.button').hide()
+        }
+        $(commentList + ":lt(" + commentTotalCnt + ")").addClass("active");
+    }
+    
+    
 	function deleteComment(){
 		document.commentForm.action="deleteComment";
 		document.commentForm.submit();

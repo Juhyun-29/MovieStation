@@ -29,4 +29,5 @@ public interface MovieMapper {
 	@Select("SELECT * FROM MOVIECOMMENT WHERE MOVIEID=#{movieId} AND MOVIESEQ=#{movieSeq} ORDER BY RSEQ DESC")
 	List<Movie> getCommentList(Movie comment);
 
+	
 }
