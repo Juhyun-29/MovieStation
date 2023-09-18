@@ -123,7 +123,7 @@
 						</form>
 					</c:when>
 					<c:otherwise>
-						<h3>나의 별점 & 한줄평</h3>
+						<h3 id="myStar">나의 별점 & 한줄평</h3>
 						<div id="commentBox" class="comment">
 							<div class="cmt_starpoint_wrap">
 								<div class="cmt_starpoint_box">
