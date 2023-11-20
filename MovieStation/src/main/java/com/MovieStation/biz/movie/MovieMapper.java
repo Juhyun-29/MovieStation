@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface MovieMapper {
 
-	@Insert("INSERT INTO MOVIECOMMENT(RSEQ,MOVIEID,MOVIESEQ,NICKNAME,CONTENT,STARPOINT,ID) VALUES((SELECT NVL(MAX(RSEQ),0)+1 FROM MOVIECOMMENT),#{movieId},#{movieSeq},#{nickname},#{content},#{starpoint},#{id})")
+	@Insert("INSERT INTO MOVIECOMMENT(RSEQ,MOVIEID,MOVIESEQ,NICKNAME,CONTENT,STARPOINT,ID) VALUES(null,#{movieId},#{movieSeq},#{nickname},#{content},#{starpoint},#{id})")
 	void insertComment(Movie comment);
 
 	@Update("UPDATE MOVIECOMMENT SET CONTENT=#{content}, STARPOINT=#{starpoint} WHERE RSEQ=#{rseq}")
@@ -20,13 +20,13 @@ public interface MovieMapper {
 	@Delete("DELETE FROM MOVIECOMMENT WHERE RSEQ=#{rseq}")
 	void deleteComment(Movie comment);
 	
+	@Select("SELECT AVG(STARPOINT) FROM MOVIECOMMENT WHERE MOVIEID=#{movieId} AND MOVIESEQ=#{movieSeq}")
+	Movie getStarPoint(Movie comment);
+	
 	@Select("SELECT * FROM MOVIECOMMENT WHERE MOVIEID=#{movieId} AND MOVIESEQ=#{movieSeq} AND ID=#{id}")
 	Movie getComment(Movie comment);
-//
-//	@Select()
-//	Comment getStarPoint(Comment comment);
 
-	@Select("SELECT * FROM MOVIECOMMENT WHERE MOVIEID=#{movieId} AND MOVIESEQ=#{movieSeq} ORDER BY RSEQ DESC")
+	@Select("SELECT * FROM MOVIECOMMENT WHERE MOVIEID=#{movieId} AND MOVIESEQ=#{movieSeq} ORDER BY UPDATEDATE DESC")
 	List<Movie> getCommentList(Movie comment);
 
 	

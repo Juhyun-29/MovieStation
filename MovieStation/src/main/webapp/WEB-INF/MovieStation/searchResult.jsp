@@ -15,13 +15,14 @@
 <script src="js/searchResult.js"></script>
 <script src="js/sideBar.js"></script>
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
+<link rel="stylesheet" href="css/frame.css" >
 <link rel="stylesheet" href="css/searchResult.css" >
 
 </head>
 <body>
 	<div id="container">
 		<jsp:include page="frame/sideBarSearch.jsp"/>
-		<div id="searchContainer">
+		<div id="subContainer1">
   			<div id="search">
   				<form id="searchForm" name="searchForm" action="searching">
   					<select id="searchType" name="searchType">
@@ -40,7 +41,7 @@
 	  					<ul id="list">
 							<c:forEach items="${finalMovieList }" var="movie">
 								<li class="list-group">
-									<div class="movieImg"><a href="movie?movieId=${movie.movieId}&movieSeq=${movie.movieSeq}"><img class="" alt="poster" src="${movie.posters}" onerror="this.onerror=null; this.src='img/nullPoster.png';" style="width: 213px;"></a></div>
+									<div class="movieImg"><a href="movie?movieId=${movie.movieId}&movieSeq=${movie.movieSeq}"><img class="" alt="poster" src="${movie.posters}" onerror="this.onerror=null; this.src='img/nullPoster.png';" "></a></div>
 									<div class="list-group-item">
 										<a href="movie?movieId=${movie.movieId}&movieSeq=${movie.movieSeq}"><b>${movie.title}</b></a>
 										<div class="simpleInfo">${movie.rating}&nbsp;&nbsp;${movie.repRlsDate}&nbsp;&nbsp;${movie.genre}&nbsp;&nbsp;${movie.runtime}분</div>

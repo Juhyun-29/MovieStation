@@ -1,100 +1,11 @@
 @charset "UTF-8";
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-html::-webkit-scrollbar{
-	width: 10px;
-}
-html::-webkit-scrollbar-thumb{
-	height: 30%;
-	background: #c2c2c2;
-	border-radius: 10px;
-}
-html::-webkit-scrollbar-track{
-	background: #161616;
-}
-
-body{
-	font-family: 'NanumSquareNeo';
-	background-color: black;
-}
 h1{
-	font-size: 72px;
+	font-size: 64px;
 }
 h2{
 	margin-left: 30px;
 	margin-bottom: 12px;
-}
-a{
-	text-decoration: none;
-}
-
-#container
-{
-	height: 100%;
-	display: flex;
-	color: #c2c2c2;
-}
-
-#sideBar
-{
-	width: 7%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	background-color: #161616;
-	position: fixed;
-	font-size: 14px;
-}
-#sideBar a{
-	color: #c2c2c2;
-}
-
-.logo{
-	text-align: center;
-	position: absolute;
-	top: 1%;
-}
-.btnImg{
-	text-align: center;
-}
-.btnImg a{
-	display: block;
-	padding-top: 25%;
-	padding-bottom: 22%;
-}
-.btnImg a:hover{
-	background-color: black;
-}
-.active{
-	background-color: black;
-	border-right: 2px solid red;
-}
-#loginout{
-	width: 100%;
-	text-align: center;
-	position: absolute;
-	bottom: 3%;
-}
-#loginout a{
-	font-size: 16px;
-}
-#insertUser{
-	margin-bottom: 10px;
-}
-
-#subContainer1
-{
-	width: 93%;
-	display: flex;
-	margin-left: 7%;
-	right: 0;
-	flex-direction: column;
 }
 
 #main
@@ -131,8 +42,9 @@ a{
 	bottom: 0;
     left: 0;
     padding-left: 30px;
+    margin-bottom: 40px;
     overflow: hidden;
-    background: linear-gradient(to top, black, black 30%, transparent);
+    background: linear-gradient(to top, black, black 5%, transparent);
 }
 #title{
 	font-family: 'NanumSquareNeoHeavy';
@@ -145,47 +57,43 @@ a{
 	margin-right: 5px;
 }
 #facts a{
-	font-size: 16px;
 	margin-right: 7px;
 }
 #overview{
 	margin-top: 15px;
-	font-size: 20px;
-	width: 33%;
-	height: 88px;
+	width: 55%;
     overflow : hidden;
     text-overflow : ellipsis;
     display : -webkit-box;
-    -webkit-line-clamp : 4;
+    -webkit-line-clamp : 3;
     -webkit-box-orient : vertical;
 }
 #btns{
 	width: 100%;
+	height: 60px;
 	margin-top: 15px;
 	display: flex;
 	flex-direction: row;
 	line-height: 40px;
 }
+.divBtn{
+	height: 40px;
+	border: 0px solid #161616;
+	border-radius: 5px;
+	text-align: center;
+	font-size: 18px;
+}
 .divBtn a{
 	color: black;
 }
 #firstNo{
-	width: 230px;
-	height: 40px;
+	width: 200px;
 	margin-right: 10px;
-	border: 0px solid #161616;
-	border-radius: 5px;
 	background-color: white;
 	text-align: center;
-	font-size: 18px;
 }
 #firstInfo{
-	width: 120px;
-	height: 40px;
-	border: 0px solid #161616;
-	border-radius: 5px;
-	text-align: center;
-	font-size: 18px;
+	width: 100px;
 	background-color: #c2c2c2;
 }
 #topBar
@@ -195,7 +103,7 @@ a{
 	position: absolute;
 	top: 0;
     left: 0;
-	background: linear-gradient(to bottom, black, black 45%, transparent);
+	background: linear-gradient(to bottom, black, black 35%, transparent);
 }
 #bottomBar
 {
@@ -206,58 +114,30 @@ a{
     left: 0;
 	background-color: black;
 }
-
-#subContainer2
-{
-	height: 100%;
-}
-#boxOffice10
+.posterList
 {
 	margin: 0px 30px 30px 30px;
 	display: flex;
 	flex-direction: row;
 	overflow-x:auto;
 }
-#boxOffice10:hover{
+.posterList:hover{
 	cursor: pointer;
 }
-#boxOffice10::-webkit-scrollbar{
+.posterList::-webkit-scrollbar{
 	width: 5px;
-	height: 12px;
+	height: 10px;
 }
-#boxOffice10::-webkit-scrollbar-thumb{
-	height: 10%;
+.posterList::-webkit-scrollbar-thumb{
+	height: 5%;
 	background: #c2c2c2;
 	border-radius: 10px;
 }
-#boxOffice10::-webkit-scrollbar-track{
+.posterList::-webkit-scrollbar-track{
 	background: #161616;
 }
 .boxDetail{
 	line-height: 50%;
-}
-
-#upcoming
-{
-	margin: 0px 30px 30px 30px;
-	display: flex;
-	flex-direction: row;
-	overflow-x:auto;
-}
-#upcoming:hover{
-	cursor: pointer;
-}
-#upcoming::-webkit-scrollbar{
-	width: 5px;
-	height: 12px;
-}
-#upcoming::-webkit-scrollbar-thumb{
-	height: 10%;
-	background: #c2c2c2;
-	border-radius: 10px;
-}
-#upcoming::-webkit-scrollbar-track{
-	background: #161616;
 }
 
 .movieImg a img{
@@ -276,3 +156,50 @@ a{
 	clear: both;
 	width: 100%;
 }
+
+/* 모바일용 사이즈  */
+@media (max-width: 768px) {
+	h1{
+		font-size: 48px;
+	}
+	h2{
+		font-size: 18px;
+	}
+	#header{
+    	margin-bottom: 30px;
+	}
+	#topBar
+	{
+		background: linear-gradient(to bottom, black, black 50%, transparent);
+	}
+	#facts{
+		margin-top: 5px;
+	}
+	#facts span{
+		margin-right: 3px;
+	}
+	#facts a{
+		font-size: 14px;
+		margin-right: 5px;
+	}
+	#overview{
+		font-size: 14px;
+		margin-top: 5px;
+	}
+	#btns{
+		height: 40px;
+		margin-top: 10px;
+		line-height: 30px;
+	}
+	.divBtn{
+		height: 30px;
+		font-size: 16px;
+	}
+    .movieImg a img
+    {
+		width: 160px;
+		height: 240px;
+	}
+}
+
+

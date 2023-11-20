@@ -1,25 +1,78 @@
 package com.MovieStation.view.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.MovieStation.biz.user.User;
+import com.MovieStation.biz.user.UserMailService;
 import com.MovieStation.biz.user.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 public class UserController {
 	
-	@Autowired
-	private UserService userService;
+	private final UserService userService;
+	private final UserMailService userMailService;
+	
+	@PostMapping("/idCheck")
+	public String getUserId(String id) {
+		System.out.println("아이디 중복 확인");
+		String number;
+		if(userService.getUserId(id)!=null) {
+			System.out.println("아이디 중복");
+			number="1";
+		}else {
+			System.out.println("아이디 사용 가능");
+			number="0";
+		}
+		return number;
+	}
+	
+	@PostMapping("/nickCheck")
+	public String getUserNick(String nickname) {
+		System.out.println("닉네임 중복 확인");
+		String number;
+		if(userService.getUserNick(nickname)!=null) {
+			System.out.println("닉네임 중복");
+			number="1";
+		}else {
+			System.out.println("닉네임 사용 가능");
+			number="0";
+		}
+		return number;
+	}
+	
+	@PostMapping("/mailCheck")
+	public String getUserMail(String mail) {
+		System.out.println("메일 중복 확인");
+		String number;
+		if(userService.getUserMail(mail)!=null) {
+			System.out.println("메일 중복");
+			number="1";
+		}else {
+			System.out.println("메일 사용 가능");
+			number="0";
+		}
+		return number;
+	}
+	
+	@PostMapping("/mail")
+	public String mailSend(String mail) {
+		System.out.println("인증 메일 발송");
+		int number=userMailService.sendMail(mail);
+		String num=""+number;
+
+		return num;
+	}
 
 	@GetMapping("/index")
 	public ModelAndView index(ModelAndView mav) {
-		System.out.println("index 페이지 이동");
+		System.out.println("메인 페이지 이동");
 		mav.setViewName("index");
 		return mav;
 	}
@@ -34,6 +87,8 @@ public class UserController {
 	@PostMapping("/insertUser")
 	public ModelAndView insertUser(User user, ModelAndView mav) {
 		System.out.println("insertUser 실행");
+		
+		
 		userService.insertUser(user);
 		mav.setViewName("redirect:index");
 		return mav;
@@ -59,7 +114,7 @@ public class UserController {
 			session.setAttribute("role", userService.getUser(user).getRole());
 			mav.setViewName("redirect:index");
 		}else {
-			mav.addObject("msg", "비밀번호를 잘못 입력했거나 없는 아이디입니다");
+			mav.addObject("msg", "비밀번호를 잘못 입력했거나 없는 아이디입니다.");
 			mav.setViewName("login");
 		}
 		return mav;

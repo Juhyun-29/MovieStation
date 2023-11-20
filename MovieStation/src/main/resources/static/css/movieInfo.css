@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+h1{
+	font-family: 'NanumSquareNeoExtraBold';
+}
+a{
+	color: #c2c2c2;
+}
+
+#header{
+	margin: 50px 40px 0px 40px;
+	display: flex;
+}
+#header h1{
+	font-size: 50px;
+}
+
+#title{
+	margin-bottom: 30px;
+}
+
+#main{
+	margin-left: 15px;
+}
+#detail{
+	display: flex;
+}
+#detailMobile{
+	display: none;
+}
+.detailHeader{
+	margin-bottom: 10px;
+}
+.detail{
+	margin-bottom: 3px;
+}
+
+#plot{
+	margin: 20px 40px 0px 40px;
+}
+#plotText{
+	line-height: 1.2;
+}
+
+.list{
+	display: flex;
+	flex-direction: column;
+	margin-right: 15px;
+	line-height: 1.1;
+}
+
+#stil
+{
+	margin: 30px 40px;
+	display: flex;
+	flex-direction: row;
+	overflow-x: auto;
+	background-color: #161616;
+	border: 1px solid #161616;
+	border-radius: 10px;
+	align-items: center;
+}
+#stil:hover{
+	cursor: pointer;
+}
+#stil::-webkit-scrollbar{
+	width: 5px;
+	height: 12px;
+}
+#stil::-webkit-scrollbar-thumb{
+	height: 10%;
+	background: #c2c2c2;
+	border-radius: 10px;
+}
+#stil::-webkit-scrollbar-track{
+	background: #161616;
+}
+#stil img{
+	object-fit: contain;
+	margin: 10px 0px 10px 15px;
+	border-radius: 10px;
+	transition: all 0.2s linear;
+}
+#stil a:hover img{
+	transform: scale(1.1);
+}
+
+#noResult{
+	margin-top: 15px;
+	margin-left: 50px;
+	margin-bottom: 30px;
+}
+
+.commentBox{
+	margin: 10px 40px;
+}
+
+.starTitle{
+	margin-left: 40px;
+}
+
+.comment{
+	background: #161616;
+	padding: 10px;
+}
+
+.a_number{
+	font-size: 12px;
+}
+.a_text{
+	font-size: 14px;
+}
+
+.btn{
+	border: none;
+	background: none;
+	color: #c2c2c2;
+	cursor: pointer;
+	font-family: 'NanumSquareNeo';
+}
+
+.cmt_starpoint_wrap{display:inline-block; vertical-align: middle;}
+.cmt_starpoint_box{position:relative;background:url("../img/sp_star.png") 0 0 no-repeat;font-size:0;}
+.cmt_starpoint_box .cmt_starpoint_bg{display:block;position:absolute;top:0;left:0;height:13px;background:url("../img/sp_star.png") 0 -15px no-repeat;pointer-events:none;}
+.cmt_starpoint_box .cmt_label_star{display:inline-block;width:72px;height:13px;box-sizing:border-box;}
+
+.starpoint_wrap{display:inline-block; vertical-align: middle;}
+.starpoint_box{position:relative;background:url("../img/sp_star.png") 0 0 no-repeat;font-size:0;}
+.starpoint_box .starpoint_bg{display:block;position:absolute;top:0;left:0;height:13px;background:url("../img/sp_star.png") 0 -15px no-repeat;pointer-events:none;}
+.starpoint_box .label_star{display:inline-block;width:7.2px;height:13px;box-sizing:border-box;}
+.starpoint_box .star_radio{opacity:0;width:0;height:0;position:absolute;}
+.blind{position:absolute;clip:rect(0 0 0 0);margin:-1px;width:1px;height: 1px;overflow:hidden;}
+
+#footer
+{
+	clear: both;
+	width: 100%;
+}
+
+
+/* 모바일용 사이즈  */
+@media (max-width: 768px) {
+	#header{
+		margin: 30px 15px 0px 30px;
+	}
+	#header h1{
+		font-size: 36px;
+	}
+	#title{
+		margin-bottom: 25px;
+	}
+	#detail {
+		display: none;
+	}
+	#detailMobile{
+		display: flex;
+	}
+	#detailMobile h3{
+		font-size: 18px;
+	}
+	#detailMobile a{
+		font-size: 14px;
+	}
+	#staffList{
+		margin-bottom: 15px;
+	}
+	#actorList{
+		margin-right: 0px;
+	}
+	#plot{
+		margin: 20px 30px 0px 30px;
+	}
+	#plotText{
+		font-size: 15px;
+	}
+	#stil{
+		margin: 30px 30px;
+	}
+	.commentBox{
+		margin: 10px 30px;
+	}
+	.starTitle{
+		margin-left: 30px;
+	}
+}

@@ -13,13 +13,14 @@
 <script src="js/search.js"></script>
 <script src="js/sideBar.js"></script>
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
+<link rel="stylesheet" href="css/frame.css" >
 <link rel="stylesheet" href="css/search.css" >
 
 </head>
 <body>
 	<div id="container">
 		<jsp:include page="frame/sideBarSearch.jsp"/>
-		<div id="searchContainer">
+		<div id="subContainer1">
   			<div id="search">
   				<img alt="movie" src="img/searchImg.jpg" width="60%">
   				<form id="searchForm" name="searchForm" action="searching">
