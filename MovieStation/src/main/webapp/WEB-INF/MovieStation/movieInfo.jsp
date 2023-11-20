@@ -20,7 +20,7 @@
 
 </head>
 <body>
-	<div id="container">
+ 	<div id="container">
 		<jsp:include page="frame/sideBarSearch.jsp"/>
 		<div id="subContainer1">
 			<div id="header">
@@ -34,13 +34,18 @@
 						</h1>
 					</div>
 					<div id="detail">
-						<div id="staffList" class="list">
+						<div id="staffAndStarpoint" class="list">
 							<h3 class="detailHeader">제작진</h3>
 							<c:forEach items="${staffList}" var="staff">
 								<a class="detail"><b>${staff.staffRoleGroup} | </b>${staff.staffNm}</a>
 							</c:forEach>
+							<br>
+							<div id="score">
+								<img alt="starpoint" src="img/score.png" width="90px">
+								<a></a>
+							</div>
 						</div>
-						<div id="info" class="list">
+						<div id="info" class="infoList">
 							<h3 class="detailHeader">기본정보</h3>
 							<a class="detail"><b>개봉 | </b>${repRlsDate}</a>
 							<a class="detail"><b>등급 | </b>${rating}</a>
@@ -274,7 +279,7 @@
 			</c:if>
 			<hr>
 		</div>
-	</div>
+ 	</div> 
 	<div id="footer"></div>
 </body>
 </html>
