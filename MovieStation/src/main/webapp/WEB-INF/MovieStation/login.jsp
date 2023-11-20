@@ -38,7 +38,10 @@
 							<li>
 								<input class="input" type="password" name="password">
 							</li>
-  							<li> <input type="submit" value="로그인"></li>
+  							<li> 
+								<input type="submit" value="로그인">
+								<button class="lastBtn" type="reset" onclick="resetAlert();">다시쓰기</button>
+							</li>
   						</ul>
   						<a href="getUserId">아이디 찾기</a><a href="getUserPw">비밀번호 찾기</a><a href="insertUser">회원가입</a>
   					</form>
