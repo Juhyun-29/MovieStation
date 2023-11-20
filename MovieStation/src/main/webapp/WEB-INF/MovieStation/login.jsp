@@ -14,7 +14,7 @@
 <script src="js/sideBar.js"></script>
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
 <link rel="stylesheet" href="css/frame.css" >
-
+<link rel="stylesheet" href="css/login.css" >
 
 </head>
 <body>
@@ -24,6 +24,7 @@
   			<div id="main">
   				<div id="formBox">
   					<form id="form" name="form" action="login" method="post">
+						<img alt="logo" src="img/movieStation.png">
   						<ul>
   							<li>
 								아이디

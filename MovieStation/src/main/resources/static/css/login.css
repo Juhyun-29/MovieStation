@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+#main{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	text-align: center;
+	align-items: center;
+}
+
+ul{
+	list-style: none;
+}
+
+#formBox{
+	width: 100%;
+}
+#form{
+	width: 50%;
+	margin: 0 auto;
+	font-family: 'NanumSquareNeoExtraBold';
+	font-size: 14px;
+}
+#form img{
+	width: 180px;
+	margin: 60px 0px;
+}
+#form ul{
+	width: 70%;
+	margin: 0 auto;
+}
+#form li{
+	text-align: left;
+	margin-bottom: 7px;
+}
+#form .input{
+	width: 100%;
+	height: 40px;
+	padding-left: 10px;
+	font-family: 'NanumSquareNeo';
+}
+#gender_input{
+	width: 100%;
+	height: 40px;
+	background: white;
+	font-family: 'NanumSquareNeo';
+	font-size: 13px;
+	color: black;
+	border-radius: 1px;
+	padding: 10px;
+	line-height: 20px;
+}
+.select{
+	position: relative;
+	margin: 0px 5px;
+	top: 2.5px;
+}
+.checkInput{
+	width: 70%;
+	height: 40px;
+	padding-left: 10px;
+}
+.msg{
+	font-family: 'NanumSquareNeo';
+	font-size: 12px;
+	margin-bottom: 12px;
+	color: yellow;
+}
+.checkBtn{
+	position: relative;
+	top: -0.5px;
+	width: 29%;
+	height: 40px;
+	padding: 10px;
+	font-family: 'NanumSquareNeoExtraBold';
+}
+.lastBtn{
+	margin-top: 5px;
+	width: 49.5%;
+	height: 40px;
+	padding: 10px;
+	font-family: 'NanumSquareNeoExtraBold';
+}
+
+#footer
+{
+	clear: both;
+	width: 100%;
+}
+
+/* 모바일용 사이즈  */
+@media (max-width: 768px) {
+	#form ul{
+		width: 100%;
+	}
+	.checkBtn{
+		width: 28.5%;
+	}
+	.lastBtn{
+		width: 49.3%;
+	}
+}
+
