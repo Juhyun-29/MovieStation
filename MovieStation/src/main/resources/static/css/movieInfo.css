@@ -1,108 +1,14 @@
 @charset "UTF-8";
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-body{
-	font-family: 'NanumSquareNeo';
-	background-color: black;
-}
 h1{
 	font-family: 'NanumSquareNeoExtraBold';
 }
 a{
 	color: #c2c2c2;
-	text-decoration: none;
-}
-#container
-{
-	height: 100%;
-	display: flex;
-	color: #c2c2c2;
-}
-
-#sideBar
-{
-	width: 7%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	background-color: #161616;
-	position: fixed;
-	font-size: 14px;
-}
-#sideBar a{
-	font-size: 14px;
-	color: #c2c2c2;
-}
-
-.logo{
-	text-align: center;
-	position: absolute;
-	top: 1%;
-}
-.btnImg{
-	text-align: center;
-}
-.btnImg a{
-	display: block;
-	padding-top: 25%;
-	padding-bottom: 22%;
-}
-.btnImg a:hover{
-	background-color: black;
-}
-.btnImg a img{
-	transition: all 0.2s linear;
-}
-.btnImg a:hover img{
-	transform: scale(1.1);
-}
-.active{
-	background-color: black;
-	border-right: 2px solid red;
-}
-#loginout{
-	width: 100%;
-	text-align: center;
-	position: absolute;
-	bottom: 3%;
-}
-#loginout a{
-	font-size: 16px;
-}
-#insertUser{
-	margin-bottom: 10px;
-}
-
-#subContainer1
-{
-	margin-left:7%;
-	width: 93%;
-	display: flex;
-	right: 0;
-	overflow-y: auto;
-	overflow-x: hidden;
-	flex-direction: column;
-}
-#subContainer1::-webkit-scrollbar{
-	width: 10px;
-}
-#subContainer1::-webkit-scrollbar-thumb{
-	height: 30%;
-	background: #c2c2c2;
-	border-radius: 10px;
-}
-#subContainer1::-webkit-scrollbar-track{
-	background: #161616;
 }
 
 #header{
-	margin: 50px 50px 0px 50px;
+	margin: 50px 40px 0px 40px;
 	display: flex;
 }
 #header h1{
@@ -112,14 +18,15 @@ a{
 #title{
 	margin-bottom: 30px;
 }
-.header{
-	margin-bottom: 15px;
-}
+
 #main{
-	margin-left: 30px;
+	margin-left: 15px;
 }
 #detail{
 	display: flex;
+}
+#detailMobile{
+	display: none;
 }
 .detailHeader{
 	margin-bottom: 10px;
@@ -127,20 +34,24 @@ a{
 .detail{
 	margin-bottom: 3px;
 }
+
 #plot{
-	margin-left: 50px;
-	margin-right: 50px;
+	margin: 20px 40px 0px 40px;
+}
+#plotText{
+	line-height: 1.2;
 }
 
 .list{
 	display: flex;
 	flex-direction: column;
-	margin-right: 30px;
+	margin-right: 15px;
+	line-height: 1.1;
 }
 
-#stll
+#stil
 {
-	margin: 30px 50px;
+	margin: 30px 40px;
 	display: flex;
 	flex-direction: row;
 	overflow-x: auto;
@@ -149,28 +60,28 @@ a{
 	border-radius: 10px;
 	align-items: center;
 }
-#stll:hover{
+#stil:hover{
 	cursor: pointer;
 }
-#stll::-webkit-scrollbar{
+#stil::-webkit-scrollbar{
 	width: 5px;
 	height: 12px;
 }
-#stll::-webkit-scrollbar-thumb{
+#stil::-webkit-scrollbar-thumb{
 	height: 10%;
 	background: #c2c2c2;
 	border-radius: 10px;
 }
-#stll::-webkit-scrollbar-track{
+#stil::-webkit-scrollbar-track{
 	background: #161616;
 }
-#stll img{
+#stil img{
 	object-fit: contain;
 	margin: 10px 0px 10px 15px;
 	border-radius: 10px;
 	transition: all 0.2s linear;
 }
-#stll a:hover img{
+#stil a:hover img{
 	transform: scale(1.1);
 }
 
@@ -180,19 +91,16 @@ a{
 	margin-bottom: 30px;
 }
 
-#myStar{
-	margin-left: 50px;
+.commentBox{
+	margin: 10px 40px;
 }
-#commentList{
-	margin-left: 50px;
-	margin-right: 50px;
-	margin-bottom: 30px;
+
+.starTitle{
+	margin-left: 40px;
 }
 
 .comment{
 	background: #161616;
-	margin-top: 10px;
-	margin-bottom: 10px;
 	padding: 10px;
 }
 
@@ -203,9 +111,12 @@ a{
 	font-size: 14px;
 }
 
-#commentBox{
-	margin-left: 50px;
-	margin-right: 50px;
+.btn{
+	border: none;
+	background: none;
+	color: #c2c2c2;
+	cursor: pointer;
+	font-family: 'NanumSquareNeo';
 }
 
 .cmt_starpoint_wrap{display:inline-block; vertical-align: middle;}
@@ -224,4 +135,51 @@ a{
 {
 	clear: both;
 	width: 100%;
+}
+
+
+/* 모바일용 사이즈  */
+@media (max-width: 768px) {
+	#header{
+		margin: 30px 15px 0px 30px;
+	}
+	#header h1{
+		font-size: 36px;
+	}
+	#title{
+		margin-bottom: 25px;
+	}
+	#detail {
+		display: none;
+	}
+	#detailMobile{
+		display: flex;
+	}
+	#detailMobile h3{
+		font-size: 18px;
+	}
+	#detailMobile a{
+		font-size: 14px;
+	}
+	#staffList{
+		margin-bottom: 15px;
+	}
+	#actorList{
+		margin-right: 0px;
+	}
+	#plot{
+		margin: 20px 30px 0px 30px;
+	}
+	#plotText{
+		font-size: 15px;
+	}
+	#stil{
+		margin: 30px 30px;
+	}
+	.commentBox{
+		margin: 10px 30px;
+	}
+	.starTitle{
+		margin-left: 30px;
+	}
 }

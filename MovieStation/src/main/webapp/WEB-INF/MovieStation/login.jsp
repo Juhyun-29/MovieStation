@@ -13,19 +13,30 @@
 <script src="js/search.js"></script>
 <script src="js/sideBar.js"></script>
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
-<link rel="stylesheet" href="css/user.css" >
+<link rel="stylesheet" href="css/frame.css" >
+
 
 </head>
 <body>
 	<div id="container">
 		<jsp:include page="frame/sideBarIndex.jsp"/>
-		<div id="subContainer">
+		<div id="subContainer1">
   			<div id="main">
   				<div id="formBox">
   					<form id="form" name="form" action="login" method="post">
   						<ul>
-  							<li><label for="id">아이디 : </label><input class="input" type="text" name="id"></li>
-  							<li><label for="password">비밀번호 : </label><input class="input" type="password" name="password"></li>
+  							<li>
+								아이디
+							</li>
+							<li>
+								<input class="input" type="text" name="id">
+							</li>
+  							<li>
+								비밀번호
+							</li>
+							<li>
+								<input class="input" type="password" name="password">
+							</li>
   							<li> <input type="submit" value="로그인"></li>
   						</ul>
   						<a href="getUserId">아이디 찾기</a><a href="getUserPw">비밀번호 찾기</a><a href="insertUser">회원가입</a>

@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8" name="viewport"
-   content="width=device-width, initial-scale=1, minimum-scale=1.0">
-<title>메인</title>
+   content="width=device-width, initial-scale=1">
+<title>무비스테이션</title>
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
    integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
@@ -13,6 +13,7 @@
 <script src="js/index.js"></script>
 <script src="js/sideBar.js"></script>
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
+<link rel="stylesheet" href="css/frame.css" >
 <link rel="stylesheet" href="css/index.css" >
 
 </head>
@@ -44,13 +45,11 @@
   				<div id="topBar"></div>
   				<div id="bottomBar"></div>
   			</div>
-  			<div id="subContainer2">
+  			<div id="list">
   				<h2>어제의 박스오피스 TOP 10</h2>
-  				<div id="boxOffice10"></div>
-         	
+  				<div id="boxOffice10" class="posterList"></div>
   				<h2>개봉 & 개봉 예정 영화</h2>
-  				<div id="upcoming"></div>
-  			
+  				<div id="upcoming" class="posterList"></div>
   			</div>
   		</div>
 	</div>

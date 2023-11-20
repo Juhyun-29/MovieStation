@@ -15,13 +15,14 @@
 <script src="js/sideBar.js"></script>
 <link rel="stylesheet"
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
+<link rel="stylesheet" href="css/frame.css">
 <link rel="stylesheet" href="css/boxOffice.css">
 
 </head>
 <body>
 	<div id="container">
 		<jsp:include page="frame/sideBarBoxOffice.jsp" />
-		<div id="subContainer">
+		<div id="subContainer1">
 			<div id="dailyHeader" class="chartHeader"></div>
 			<table id="dailyBoxOffice" border="1" class="table">
 				<thead class="table-dark">
@@ -30,10 +31,10 @@
 						<th>영화명</th>
 						<th>개봉일</th>
 						<th>관객수</th>
-						<th>관객수증감(전일대비)</th>
+						<th class="desktopOnly">관객수증감</th>
 						<th>누적관객수</th>
-						<th>스크린수</th>
-						<th>상영횟수</th>
+						<th class="desktopOnly">스크린수</th>
+						<th class="desktopOnly">상영횟수</th>
 					</tr>
 				</thead>
 				<tbody id="dailyBoxOfficeList"></tbody>
@@ -47,10 +48,10 @@
 						<th>영화명</th>
 						<th>개봉일</th>
 						<th>관객수</th>
-						<th>관객수증감(전주대비)</th>
+						<th class="desktopOnly">관객수증감</th>
 						<th>누적관객수</th>
-						<th>스크린수</th>
-						<th>상영횟수</th>
+						<th class="desktopOnly">스크린수</th>
+						<th class="desktopOnly">상영횟수</th>
 					</tr>
 				</thead>
 				<tbody id="weekendBoxOfficeList"></tbody>
@@ -64,10 +65,10 @@
 						<th>영화명</th>
 						<th>개봉일</th>
 						<th>관객수</th>
-						<th>관객수증감(전주대비)</th>
+						<th class="desktopOnly">관객수증감</th>
 						<th>누적관객수</th>
-						<th>스크린수</th>
-						<th>상영횟수</th>
+						<th class="desktopOnly">스크린수</th>
+						<th class="desktopOnly">상영횟수</th>
 					</tr>
 				</thead>
 				<tbody id="weeklyBoxOfficeList"></tbody>

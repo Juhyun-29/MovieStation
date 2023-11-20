@@ -8,6 +8,15 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserMapper {
+	
+	@Select("SELECT * FROM MOVIEMEMBER WHERE ID=#{id}")
+	String getUserId(String id);
+	
+	@Select("SELECT * FROM MOVIEMEMBER WHERE NICKNAME=#{nickname}")
+	String getUserNick(String nickname);
+	
+	@Select("SELECT * FROM MOVIEMEMBER WHERE MAIL=#{mail}")
+	String getUserMail(String mail);
 
 	@Insert("INSERT INTO MOVIEMEMBER(ID, PASSWORD, NAME, NICKNAME, BIRTHDAY, GENDER, MAIL) VALUES(#{id}, #{password}, #{name}, #{nickname}, #{birthday}, #{gender}, #{mail})")
 	void insertUser(User user);

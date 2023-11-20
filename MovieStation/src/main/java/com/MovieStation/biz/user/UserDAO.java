@@ -1,14 +1,27 @@
 package com.MovieStation.biz.user;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class UserDAO {
 
-	@Autowired
-	private SqlSessionTemplate mybatis;
+	private final SqlSessionTemplate mybatis;
+	
+	public String getUserId(String id) {
+		return mybatis.selectOne("getUserId", id);
+	}
+	
+	public String getUserNick(String nickname) {
+		return mybatis.selectOne("getUserNick", nickname);
+	}
+	
+	public String getUserMail(String mail) {
+		return mybatis.selectOne("getUserMail", mail);
+	}
 	
 	public void insertUser(User user) {
 		mybatis.insert("insertUser", user);

@@ -17,6 +17,7 @@ public class Movie {
 	private String content;
 	private int starpoint;
 	private String regdate;
+	private String updatedate;
 	private String id;
 	
 	private String page;

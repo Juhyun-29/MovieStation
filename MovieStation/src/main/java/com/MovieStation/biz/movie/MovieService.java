@@ -2,14 +2,15 @@ package com.MovieStation.biz.movie;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class MovieService implements MovieMapper{
 
-	@Autowired
-	MovieDAO movieDAO;
+	private final MovieDAO movieDAO;
 	
 	@Override
 	public void insertComment(Movie comment) {
@@ -27,13 +28,22 @@ public class MovieService implements MovieMapper{
 	}
 
 	@Override
-	public List<Movie> getCommentList(Movie comment) {
-		return movieDAO.getCommentList(comment);
+	public Movie getStarPoint(Movie comment) {
+		return movieDAO.getStarPoint(comment);
 	}
-
+	
 	@Override
 	public Movie getComment(Movie comment) {
 		return movieDAO.getComment(comment);
 	}
+	
+	@Override
+	public List<Movie> getCommentList(Movie comment) {
+		return movieDAO.getCommentList(comment);
+	}
+
+	
+
+	
 
 }

@@ -3,7 +3,6 @@ package com.MovieStation.view.movie;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -21,8 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.MovieStation.biz.movie.Movie;
 import com.MovieStation.biz.movie.MovieService;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
@@ -33,6 +30,7 @@ public class MovieController {
 	
 	@GetMapping("/search")
 	public ModelAndView searchPage(ModelAndView mav) {
+		System.out.println("검색 페이지 이동");
 		mav.setViewName("search");
 		return mav;
 	}
@@ -227,8 +225,8 @@ public class MovieController {
 			JSONObject plotData=(JSONObject)plot.get(0);
 			String plotText=(String)plotData.get("plotText");
 			
-			String stlls=(String)movieInfo.get("stlls");
-			String[] stllList=stlls.split("\\|");
+			String stils=(String)movieInfo.get("stlls");
+			String[] stilList=stils.split("\\|");
 			
 			JSONObject staffs=(JSONObject)movieInfo.get("staffs");
 			JSONArray staff=(JSONArray)staffs.get("staff");
@@ -275,7 +273,7 @@ public class MovieController {
 			mav.addObject("runtime", runtime);
 			mav.addObject("repRlsDate", repRlsDate);
 			mav.addObject("plotText", plotText);
-			mav.addObject("stllList", stllList);
+			mav.addObject("stilList", stilList);
 			mav.addObject("staffList", staffList);
 			mav.addObject("actorList", actorList);
 			mav.addObject("productionList", productionList);
@@ -287,12 +285,12 @@ public class MovieController {
 			e.printStackTrace();
 		}
 		
+		System.out.println("getStarPoint 실행");
+		mav.addObject("starPoint", movieService.getStarPoint(movie));
+		
 		System.out.println("getCommentList 실행");
-		
-		if(movie.getPage()==null) movie.setPage("1");
-		
-		mav.addObject("pg", movie.getPage());
 		if(movie.getId()!=null) {
+			// 세션에 아이디가 있으면(로그인 상태이면)
 			mav.addObject("myComment", movieService.getComment(movie));
 		}
 		mav.addObject("commentList", movieService.getCommentList(movie));
@@ -303,6 +301,7 @@ public class MovieController {
 	
 	@GetMapping("/boxOfficeList")
 	public ModelAndView getBoxOfficeList(Movie movie, ModelAndView mav) {
+		System.out.println("박스오피스 페이지 이동");
 		mav.setViewName("boxOfficeList");
 		return mav;
 	}
@@ -319,6 +318,14 @@ public class MovieController {
 	public ModelAndView updateComment(Movie movie, ModelAndView mav) {
 		System.out.println("updateComment 실행");
 		movieService.updateComment(movie);
+		mav.setViewName("redirect:movie?movieId="+movie.getMovieId()+"&movieSeq="+movie.getMovieSeq());
+		return mav;
+	}
+	
+	@PostMapping("/deleteComment")
+	public ModelAndView deleteComment(Movie movie, ModelAndView mav) {
+		System.out.println("deleteComment 실행");
+		movieService.deleteComment(movie);
 		mav.setViewName("redirect:movie?movieId="+movie.getMovieId()+"&movieSeq="+movie.getMovieSeq());
 		return mav;
 	}

@@ -3,14 +3,15 @@ package com.MovieStation.biz.movie;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class MovieDAO {
 	
-	@Autowired
-	private SqlSessionTemplate mybatis;
+	private final SqlSessionTemplate mybatis;
 	
 	public void insertComment(Movie comment) {
 		mybatis.insert("insertComment", comment);
