@@ -64,7 +64,7 @@ $(function(){
                   		
                   		var dailyBoxOfficeRank="<tr>"
                			+"<td>"+rank+"위</td>"
-						+"<td><a href='movie?movieId="+movieId+"&movieSeq="+movieSeq+"'>"+movieNm+"</a></td>"
+						+"<td><a href=javascript:movieInfo('"+movieId+"','"+movieSeq+"')>"+movieNm+"</a></td>"
 						+"<td>"+openDt+"</td>"
 						+"<td>"+audiCnt+"명</td>"
 						+"<td class='desktopOnly'>"+audiInten+"명</td>"
@@ -146,7 +146,7 @@ $(function(){
 						
 						var weekendBoxOfficeRank="<tr>"
                			+"<td>"+rank+"위</td>"
-						+"<td><a href='movie?movieId="+movieId+"&movieSeq="+movieSeq+"'>"+movieNm+"</a></td>"
+						+"<td><a href=javascript:movieInfo('"+movieId+"','"+movieSeq+"')>"+movieNm+"</a></td>"
 						+"<td>"+openDt+"</td>"
 						+"<td>"+audiCnt+"명</td>"
 						+"<td class='desktopOnly'>"+audiInten+"명</td>"
@@ -225,7 +225,7 @@ $(function(){
 						
 						var weeklyBoxOfficeRank="<tr>"
                			+"<td>"+rank+"위</td>"
-						+"<td><a href='movie?movieId="+movieId+"&movieSeq="+movieSeq+"'>"+movieNm+"</a></td>"
+						+"<td><a href=javascript:movieInfo('"+movieId+"','"+movieSeq+"')>"+movieNm+"</a></td>"
 						+"<td>"+openDt+"</td>"
 						+"<td>"+audiCnt+"명</td>"
 						+"<td class='desktopOnly'>"+audiInten+"명</td>"
@@ -244,4 +244,27 @@ $(function(){
      document.cookie = "safeCookie1=foo; SameSite=Lax"; 
 	 document.cookie = "safeCookie2=foo"; 
 	 document.cookie = "crossCookie=bar; SameSite=None; Secure";
-})     
+})
+
+function movieInfo(movieId,movieSeq){
+		var form=document.createElement('form');
+		
+		var id;
+		id=document.createElement('input');
+		id.setAttribute('type','hidden');
+		id.setAttribute('name','movieId');
+		id.setAttribute('value',movieId);
+		
+		var seq;
+		seq=document.createElement('input');
+		seq.setAttribute('type','hidden');
+		seq.setAttribute('name','movieSeq');
+		seq.setAttribute('value',movieSeq);
+		
+		form.appendChild(id);
+		form.appendChild(seq);
+		form.setAttribute('method','post');
+		form.setAttribute('action','movie');
+		document.body.appendChild(form);
+		form.submit();
+} 

@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
 <link rel="stylesheet" href="css/frame.css" >
 <link rel="stylesheet" href="css/searchResult.css" >
-
+<link rel="shortcut icon" href="img/movieStationBlack.png">
 </head>
 <body>
 	<div id="container">
@@ -41,9 +41,9 @@
 	  					<ul id="list">
 							<c:forEach items="${finalMovieList }" var="movie">
 								<li class="list-group">
-									<div class="movieImg"><a href="movie?movieId=${movie.movieId}&movieSeq=${movie.movieSeq}"><img class="" alt="poster" src="${movie.posters}" onerror="this.onerror=null; this.src='img/nullPoster.png';" "></a></div>
+									<div class="movieImg"><a href="javascript:movieInfo('${movie.movieId}','${movie.movieSeq}')"><img class="" alt="poster" src="${movie.posters}" onerror="this.onerror=null; this.src='img/nullPoster.png';" "></a></div>
 									<div class="list-group-item">
-										<a href="movie?movieId=${movie.movieId}&movieSeq=${movie.movieSeq}"><b>${movie.title}</b></a>
+										<a href="javascript:movieInfo('${movie.movieId}','${movie.movieSeq}')"><b>${movie.title}</b></a>
 										<div class="simpleInfo">${movie.rating}&nbsp;&nbsp;${movie.repRlsDate}&nbsp;&nbsp;${movie.genre}&nbsp;&nbsp;${movie.runtime}분</div>
 										<div id="overview" class="text-clamp">${movie.overview}</div>
 									</div>
@@ -58,19 +58,21 @@
 					</c:otherwise>
 				</c:choose>
 			<hr>
-			<!-- 페이지 리스트 삽입 시작 -->
-			<div id="paging">
-				<jsp:include page="searchResultPage.jsp">
-					<jsp:param value="${query}" name="query"/>
-					<jsp:param value="${searchType}" name="searchType"/>
-					<jsp:param value="${totalCount}" name="totalCount"/>
-					<jsp:param value="${page}" name="pg"/>
-				</jsp:include>
-			</div>
-			<!-- 페이지 리스트 삽입 끝 -->
+				<!-- 페이지 리스트 삽입 시작 -->
+				<div id="paging">
+					<jsp:include page="searchResultPage.jsp">
+						<jsp:param value="${query}" name="query"/>
+						<jsp:param value="${searchType}" name="searchType"/>
+						<jsp:param value="${totalCount}" name="totalCount"/>
+						<jsp:param value="${page}" name="pg"/>
+					</jsp:include>
+				</div>
+				<!-- 페이지 리스트 삽입 끝 -->
   			</div>
+			<div id="footer">
+				<jsp:include page="frame/footer.jsp"/>
+			</div>
   		</div>
 	</div>
-	<div id="footer"></div>
 </body>
 </html>

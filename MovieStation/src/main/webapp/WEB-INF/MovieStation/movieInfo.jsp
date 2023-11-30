@@ -14,10 +14,14 @@
    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/sideBar.js"></script>
 <script src="js/movieInfo.js"></script>
+<script 
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"
+	integrity="sha512-rCjfoab9CVKOH/w/T6GbBxnAH5Azhy4+q1EXW5XEURefHbIkRbQ++ZR+GBClo3/d3q583X/gO4FKmOFuhkKrdA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
 <link rel="stylesheet" href="css/frame.css" >
 <link rel="stylesheet" href="css/movieInfo.css" >
-
+<link rel="shortcut icon" href="img/movieStationBlack.png">
 </head>
 <body>
  	<div id="container">
@@ -26,12 +30,17 @@
 			<div id="header">
 				<div id="poster">
 					<img alt="poster" src="${poster}" onerror="this.onerror=null; this.src='img/nullPoster.png';" style="width: 213px;">
+					<c:if test="${not empty starScore}">
+						<div id="starPointScore">
+							<img alt="starPointScore" src="img/score.png" width="55px">
+							<a id="scoreData">${starScore}</a>
+							<a id="starScore"></a>
+						</div>
+					</c:if>
 				</div>
 				<div id="main">
 					<div id="title">
-						<h1>
-							<a href="movie?movieId=${movieId}&movieSeq=${movieSeq}">${title}</a>
-						</h1>
+						<a href="movie?movieId=${movieId}&movieSeq=${movieSeq}">${title}</a>
 					</div>
 					<div id="detail">
 						<div id="staffAndStarpoint" class="list">
@@ -40,12 +49,8 @@
 								<a class="detail"><b>${staff.staffRoleGroup} | </b>${staff.staffNm}</a>
 							</c:forEach>
 							<br>
-							<div id="score">
-								<img alt="starpoint" src="img/score.png" width="90px">
-								<a></a>
-							</div>
 						</div>
-						<div id="info" class="infoList">
+						<div id="info" class="list">
 							<h3 class="detailHeader">기본정보</h3>
 							<a class="detail"><b>개봉 | </b>${repRlsDate}</a>
 							<a class="detail"><b>등급 | </b>${rating}</a>
@@ -278,8 +283,10 @@
 				</div>
 			</c:if>
 			<hr>
+			<div id="footer">
+				<jsp:include page="frame/footer.jsp"/>
+			</div>
 		</div>
  	</div> 
-	<div id="footer"></div>
 </body>
 </html>

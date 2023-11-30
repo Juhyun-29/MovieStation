@@ -12,10 +12,14 @@
    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/index.js"></script>
 <script src="js/sideBar.js"></script>
+<script 
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"
+	integrity="sha512-rCjfoab9CVKOH/w/T6GbBxnAH5Azhy4+q1EXW5XEURefHbIkRbQ++ZR+GBClo3/d3q583X/gO4FKmOFuhkKrdA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
 <link rel="stylesheet" href="css/frame.css" >
 <link rel="stylesheet" href="css/index.css" >
-
+<link rel="shortcut icon" href="img/movieStationBlack.png">
 </head>
 <body>
 	<div id="container">
@@ -51,8 +55,10 @@
   				<h2>개봉 & 개봉 예정 영화</h2>
   				<div id="upcoming" class="posterList"></div>
   			</div>
+			<div id="footer">
+				<jsp:include page="frame/footer.jsp"/>
+			</div>
   		</div>
 	</div>
-	<div id="footer"></div>
 </body>
 </html>

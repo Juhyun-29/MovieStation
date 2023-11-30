@@ -29,8 +29,8 @@ public class MovieDAO {
 		return mybatis.selectOne("getComment", comment);
 	}
 	
-	public Movie getStarPoint(Movie comment) {
-		return mybatis.selectOne("getStarPoint", comment);
+	public Movie getStarScore(Movie comment) {
+		return mybatis.selectOne("getStarScore", comment);
 	}
 	
 	public List<Movie> getCommentList(Movie comment){

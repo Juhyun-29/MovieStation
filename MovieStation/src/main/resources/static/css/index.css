@@ -119,7 +119,7 @@ h2{
 	margin: 0px 30px 30px 30px;
 	display: flex;
 	flex-direction: row;
-	overflow-x:auto;
+	overflow-x:scroll;
 }
 .posterList:hover{
 	cursor: pointer;
@@ -151,10 +151,15 @@ h2{
 	transform: scale(1.1);
 }
 
-#footer
-{
+#footer{
 	clear: both;
 	width: 100%;
+	height: 50px;
+}
+#footer p{
+	font-size: 12px;
+	text-align: center;
+	margin-top: 18px;	
 }
 
 /* 모바일용 사이즈  */

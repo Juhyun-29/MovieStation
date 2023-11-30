@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
 <link rel="stylesheet" href="css/frame.css" >
 <link rel="stylesheet" href="css/login.css" >
-
+<link rel="shortcut icon" href="img/movieStationBlack.png">
 </head>
 <body>
 	<div id="container">
@@ -39,16 +39,17 @@
 								<input class="input" type="password" name="password">
 							</li>
   							<li> 
-								<input type="submit" value="로그인">
-								<button class="lastBtn" type="reset" onclick="resetAlert();">다시쓰기</button>
+								<input class="lastBtn" type="submit" value="로그인">
 							</li>
   						</ul>
   						<a href="getUserId">아이디 찾기</a><a href="getUserPw">비밀번호 찾기</a><a href="insertUser">회원가입</a>
   					</form>
   				</div>
   			</div>
+			<div id="footer">
+				<jsp:include page="frame/footer.jsp"/>
+			</div>
   		</div>
 	</div>
-	<div id="footer"></div>
 </body>
 </html>

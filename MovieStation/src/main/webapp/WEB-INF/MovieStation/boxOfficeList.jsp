@@ -17,7 +17,7 @@
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
 <link rel="stylesheet" href="css/frame.css">
 <link rel="stylesheet" href="css/boxOffice.css">
-
+<link rel="shortcut icon" href="img/movieStationBlack.png">
 </head>
 <body>
 	<div id="container">
@@ -73,6 +73,9 @@
 				</thead>
 				<tbody id="weeklyBoxOfficeList"></tbody>
 			</table>
+			<div id="footer">
+				<jsp:include page="frame/footer.jsp"/>
+			</div>
 		</div>
 	</div>
 </body>

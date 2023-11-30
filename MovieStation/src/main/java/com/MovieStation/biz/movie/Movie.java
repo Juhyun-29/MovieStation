@@ -16,6 +16,7 @@ public class Movie {
 	private String nickname;
 	private String content;
 	private int starpoint;
+	private double starscore;
 	private String regdate;
 	private String updatedate;
 	private String id;

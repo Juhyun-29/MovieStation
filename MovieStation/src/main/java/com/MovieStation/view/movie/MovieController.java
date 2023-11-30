@@ -175,7 +175,7 @@ public class MovieController {
 		return mav;
 	}
 	
-	@GetMapping("/movie")
+	@PostMapping("/movie")
 	public ModelAndView getMovieInfo(Movie movie, HttpSession session, ModelAndView mav) {
 		System.out.println("/movie 실행");
 		System.out.println("영화 상세정보 처리");
@@ -286,7 +286,10 @@ public class MovieController {
 		}
 		
 		System.out.println("getStarPoint 실행");
-		mav.addObject("starPoint", movieService.getStarPoint(movie));
+		if(movieService.getStarScore(movie)!=null) {
+			double starScore=movieService.getStarScore(movie).getStarscore();
+			mav.addObject("starScore", Math.round(starScore*100)/100.0);
+		}
 		
 		System.out.println("getCommentList 실행");
 		if(movie.getId()!=null) {

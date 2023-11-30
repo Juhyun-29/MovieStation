@@ -1,4 +1,9 @@
 $(function () {
+	
+		var scoreData=$("#scoreData").val();
+		var starScore=Math.floor(scoreData*100)/100;
+		$("#starScore").attr("value",starScore);
+		
         $(".starpoint_box").addClass("checked");
         $(".label_star").each(function (i, o) {
             $(this).on("mouseover", function () {
@@ -14,15 +19,14 @@ $(function () {
                     $(".starpoint_box").toggleClass("checked");
             })
         });
+        
+        $("#stil").mousewheel(function(event, delta) {
+			this.scrollLeft -= (delta * 50);
+			event.preventDefault();
+		})
 });
 
 function updateComment(){
 	$("#myComment").css("display","none");
 	$("#updateComment").css("display","block");
 }
-
-/*function deleteComment(){
-	myComment.method = "post";
-	myComment.action = "/deleteComment";
-	myComment.submit();
-}*/

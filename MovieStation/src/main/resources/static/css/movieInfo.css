@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-h1{
-	font-family: 'NanumSquareNeoExtraBold';
-}
 a{
 	color: #c2c2c2;
 }
@@ -11,12 +8,32 @@ a{
 	margin: 50px 40px 0px 40px;
 	display: flex;
 }
-#header h1{
-	font-size: 50px;
-}
 
 #title{
-	margin-bottom: 30px;
+	margin-bottom: 50px;
+}
+#title a{
+	font-size: 44px;
+	font-family: 'NanumSquareNeoExtraBold';
+	margin-right: 10px;
+}
+
+#poster{
+	position: relative;
+}
+
+#starPointScore img{
+	position: absolute;
+	top: 252px;
+	left: 160px;
+}
+
+#starPointScore a{
+	font-size: 15px;
+	font-style: italic;
+	position: absolute;
+	top: 272px;
+	left: 171px;
 }
 
 #main{
@@ -33,6 +50,7 @@ a{
 }
 .detail{
 	margin-bottom: 3px;
+	font-size: 14px;
 }
 
 #plot{
@@ -45,7 +63,7 @@ a{
 .list{
 	display: flex;
 	flex-direction: column;
-	margin-right: 15px;
+	margin-right: 20px;
 	line-height: 1.1;
 }
 
@@ -131,10 +149,15 @@ a{
 .starpoint_box .star_radio{opacity:0;width:0;height:0;position:absolute;}
 .blind{position:absolute;clip:rect(0 0 0 0);margin:-1px;width:1px;height: 1px;overflow:hidden;}
 
-#footer
-{
+#footer{
 	clear: both;
 	width: 100%;
+	height: 50px;
+}
+#footer p{
+	font-size: 12px;
+	text-align: center;
+	margin-top: 18px;	
 }
 
 

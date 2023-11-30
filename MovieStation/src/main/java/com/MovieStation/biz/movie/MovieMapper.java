@@ -20,8 +20,8 @@ public interface MovieMapper {
 	@Delete("DELETE FROM MOVIECOMMENT WHERE RSEQ=#{rseq}")
 	void deleteComment(Movie comment);
 	
-	@Select("SELECT AVG(STARPOINT) FROM MOVIECOMMENT WHERE MOVIEID=#{movieId} AND MOVIESEQ=#{movieSeq}")
-	Movie getStarPoint(Movie comment);
+	@Select("SELECT AVG(STARPOINT) AS STARSCORE FROM MOVIECOMMENT WHERE MOVIEID=#{movieId} AND MOVIESEQ=#{movieSeq}")
+	Movie getStarScore(Movie comment);
 	
 	@Select("SELECT * FROM MOVIECOMMENT WHERE MOVIEID=#{movieId} AND MOVIESEQ=#{movieSeq} AND ID=#{id}")
 	Movie getComment(Movie comment);

@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css">
 <link rel="stylesheet" href="css/frame.css" >
 <link rel="stylesheet" href="css/search.css" >
-
+<link rel="shortcut icon" href="img/movieStationBlack.png">
 </head>
 <body>
 	<div id="container">
@@ -34,10 +34,10 @@
   				</form>
   				<span>감독명·배우명의 경우 동명이인이 함께 검색될 수 있습니다</span>
   			</div>
-  			<div id="searchResult">
-  			</div>
+			<div id="footer">
+				<jsp:include page="frame/footer.jsp"/>
+			</div>
   		</div>
 	</div>
-	<div id="footer"></div>
 </body>
 </html>

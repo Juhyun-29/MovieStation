@@ -28,8 +28,8 @@ public class MovieService implements MovieMapper{
 	}
 
 	@Override
-	public Movie getStarPoint(Movie comment) {
-		return movieDAO.getStarPoint(comment);
+	public Movie getStarScore(Movie comment) {
+		return movieDAO.getStarScore(comment);
 	}
 	
 	@Override

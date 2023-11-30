@@ -112,7 +112,7 @@ $(function(){
                   var runtime="<a>"+runtimeData+"분</a>";
                   $("#runtime").append(runtime);
                   
-                  var firstInfo="<a href=movie?movieId="+movieId+"&movieSeq="+movieSeq+"><b>상세정보</b></a>"
+                  var firstInfo="<a href=javascript:movieInfo('"+movieId+"','"+movieSeq+"')><b>상세정보</b></a>"
                   $("#firstInfo").append(firstInfo);
                   
                   }
@@ -145,12 +145,12 @@ $(function(){
 					 	if(posterList.includes("|")){
                   			var posterArr=posterList.split("|");
                  			var firstPoster=posterArr[0];
-                  			var poster="<div class='movieImg'><a href=movie?movieId="+movieId+"&movieSeq="+movieSeq+"><img alt='포스터' src="+firstPoster+"></a></div>";
+                  			var poster="<div class='movieImg'><a href=javascript:movieInfo('"+movieId+"','"+movieSeq+"')><img alt='포스터' src="+firstPoster+"></a></div>";
                   			var boxOffice10=poster;
                   			$("#boxOffice10").append(boxOffice10);
                   		}else if(!posterList.includes("|")){
                   			var firstPoster=posterList;
-                  			var poster="<div class='movieImg'><a href=movie?movieId="+movieId+"&movieSeq="+movieSeq+"><img alt='포스터' src="+firstPoster+"></a></div>";
+                  			var poster="<div class='movieImg'><a href=javascript:movieInfo('"+movieId+"','"+movieSeq+"')><img alt='포스터' src="+firstPoster+"></a></div>";
                   			var boxOffice10=poster;
                   			$("#boxOffice10").append(boxOffice10);
                   		}
@@ -208,23 +208,50 @@ $(function(){
 							if(posterList.includes("|")){
                   				var posterArr=posterList.split("|");
                   				var firstPoster=posterArr[0];
-                  				var poster="<div class='movieImg'><a href=movie?movieId="+movieId+"&movieSeq="+movieSeq+"><img onerror=this.style.display='none' alt='포스터' src="+firstPoster+"></a></div>";
+                  				var poster="<div class='movieImg'><a href=javascript:movieInfo('"+movieId+"','"+movieSeq+"')><img onerror=this.style.display='none' alt='포스터' src="+firstPoster+"></a></div>";
                   				var upcoming=poster;
                   				$("#upcoming").append(upcoming);
                   			}else if(!posterList.includes("|")){
                   				var firstPoster=posterList;
-                  				var poster="<div class='movieImg'><a href=movie?movieId="+movieId+"&movieSeq="+movieSeq+"><img onerror=this.style.display='none' alt='포스터' src="+firstPoster+"></a></div>";
+                  				var poster="<div class='movieImg'><a href=javascript:movieInfo('"+movieId+"','"+movieSeq+"')><img onerror=this.style.display='none' alt='포스터' src="+firstPoster+"></a></div>";
                   				var upcoming=poster;
                   				$("#upcoming").append(upcoming);
                   			}
 						}
-                  		
                   	}
                   }
                })    
    	 }
      
+     $(".posterList").mousewheel(function(event, delta) {
+		 this.scrollLeft -= (delta * 50);
+		 event.preventDefault();
+     })
+     
      document.cookie = "safeCookie1=foo; SameSite=Lax"; 
 	 document.cookie = "safeCookie2=foo"; 
 	 document.cookie = "crossCookie=bar; SameSite=None; Secure";
-})     
+})
+
+function movieInfo(movieId,movieSeq){
+		var form=document.createElement('form');
+		
+		var id;
+		id=document.createElement('input');
+		id.setAttribute('type','hidden');
+		id.setAttribute('name','movieId');
+		id.setAttribute('value',movieId);
+		
+		var seq;
+		seq=document.createElement('input');
+		seq.setAttribute('type','hidden');
+		seq.setAttribute('name','movieSeq');
+		seq.setAttribute('value',movieSeq);
+		
+		form.appendChild(id);
+		form.appendChild(seq);
+		form.setAttribute('method','post');
+		form.setAttribute('action','movie');
+		document.body.appendChild(form);
+		form.submit();
+}      
